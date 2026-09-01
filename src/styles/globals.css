@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   KD SPORTS — design system
+
+   Direction: a kit bag, not a shopfront. Deep black ground, hard white type,
+   one blaze-orange accent used like a stripe on a jersey — sparingly, and
+   always to mark the thing you should look at next.
+
+   The accent is ONE variable. If KD Sports has a real brand colour, change
+   --brand-accent below and the entire site follows.
+   ========================================================================== */
+
+@theme {
+  /* --- Ground ------------------------------------------------------- */
+  --color-ink-950: #08090b;   /* page ground */
+  --color-ink-900: #0d0f12;   /* raised surface on black */
+  --color-ink-850: #131519;
+  --color-ink-800: #1a1d22;   /* cards */
+  --color-ink-700: #24282f;   /* hairlines on dark */
+  --color-ink-600: #343a44;
+  --color-ink-500: #565e6b;
+  --color-ink-400: #7d8695;
+  --color-ink-300: #a8b0bd;
+  --color-ink-200: #cfd4dc;
+  --color-ink-100: #e8eaee;
+  --color-ink-50:  #f4f5f7;
+  --color-bone:    #fbfbfa;   /* off-white light sections */
+
+  /* --- THE accent. Blaze orange. -----------------------------------
+     Chosen over the usual acid-green because green on black is the default
+     "sports site" look; orange carries heat and reads as effort rather than
+     neon. Swap this one ramp for the real brand colour if there is one. */
+  --color-blaze-50:  #fff3ed;
+  --color-blaze-100: #ffe2d2;
+  --color-blaze-200: #ffc0a3;
+  --color-blaze-300: #ff9569;
+  --color-blaze-400: #ff6a35;
+  --color-blaze-500: #ff4a17;   /* primary accent */
+  --color-blaze-600: #e8360a;
+  --color-blaze-700: #b62808;
+  --color-blaze-800: #8f2109;
+
+  --color-ok:   #16a34a;
+  --color-warn: #d97706;
+  --color-err:  #dc2626;
+
+  /* --- Semantic ----------------------------------------------------- */
+  --color-bg:            var(--color-ink-950);
+  --color-bg-raised:     var(--color-ink-900);
+  --color-bg-card:       var(--color-ink-800);
+  --color-bg-light:      var(--color-bone);
+  --color-text:          #ffffff;
+  --color-text-muted:    var(--color-ink-300);
+  --color-text-subtle:   var(--color-ink-400);
+  --color-text-on-light: var(--color-ink-950);
+  --color-accent:        var(--color-blaze-500);
+  --color-accent-hover:  var(--color-blaze-400);
+  --color-line:          var(--color-ink-700);
+  --color-line-light:    #e3e4e7;
+
+  /* --- Type ---------------------------------------------------------
+     Archivo at heavy weights and tight tracking gives the compressed,
+     stencilled feel of team kit without resorting to Bebas Neue, which is
+     on every sports template ever made. Inter carries the reading. */
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* --- Shape --------------------------------------------------------
+     Sharp. Sports gear is moulded and cut, not rounded off. 4px maximum
+     anywhere except pill buttons. */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-pill: 999px;
+
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; }
+input, select, textarea { font: inherit; }
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--color-accent); color: #fff; }
+
+/* ==========================================================================
+   Type utilities
+   ========================================================================== */
+
+.font-display { font-family: var(--font-display); }
+
+/* Section and hero headlines. Heavy, tight, uppercase — the voice of a
+   scoreboard rather than a brochure. */
+.headline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-accent);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container-kd {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) { .container-kd { padding-inline: 2rem; } }
+@media (min-width: 1280px) { .container-kd { padding-inline: 2.5rem; } }
+
+/* ==========================================================================
+   Signature: the slash
+   A single 12° accent stroke, borrowed from the stripe on a jersey sleeve.
+   Used to mark section headings and to underline a product name on hover.
+   It is the one decorative move on the site — everything else stays quiet.
+   ========================================================================== */
+
+.slash {
+  display: inline-block;
+  width: 3px; height: 1.1em;
+  background: var(--color-accent);
+  transform: skewX(-12deg);
+  margin-inline-end: .7rem;
+  vertical-align: -0.12em;
+}
+
+.slash-rule {
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent) 0 22%, var(--color-line) 22%);
+}
+
+/* Diagonal clipped corner for promo panels. */
+.clip-corner { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%); }
+
+/* ==========================================================================
+   Marquee — a kinetic strip of disciplines under the hero.
+   Duplicated content so the loop is seamless; paused for reduced motion.
+   ========================================================================== */
+
+.marquee { display: flex; overflow: hidden; user-select: none; gap: 0; }
+.marquee__row {
+  flex: none; display: flex; align-items: center; gap: 2.5rem;
+  padding-inline-end: 2.5rem;
+  animation: scroll-x 32s linear infinite;
+}
+@keyframes scroll-x { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+/* ==========================================================================
+   Motion
+
+   Rule, learned the hard way: no animation on this site fades FROM opacity 0
+   with animation-fill-mode: both, and no content is hidden waiting for an
+   IntersectionObserver to reveal it. If a script fails or animations never
+   run, every word is still readable. Reveals add the fade via a class that
+   JS only applies once it knows it can also remove it.
+   ========================================================================== */
+
+/* Transform ONLY — opacity is never animated for content.
+ *
+ * Verified the hard way: in any context where transitions do not advance (a
+ * throttled tab, an embedded preview, a browser with animations disabled) an
+ * element transitioning FROM opacity 0 keeps the start value forever. The
+ * specified value says 1, the used value stays 0, and whole sections of the
+ * page are invisible while the DOM insists they are shown.
+ *
+ * Animating position alone makes the worst case "no movement" instead of
+ * "no content". */
+.reveal { transform: none; }
+.reveal[data-state="hidden"] { transform: translateY(20px); }
+.reveal[data-state="shown"] {
+  transform: none;
+  transition: transform .6s var(--ease-out);
+}
+
+/* Hero entrance — transform only, so text is never invisible. */
+@keyframes rise-in { from { transform: translateY(22px); } to { transform: none; } }
+.hero-in > * { animation: rise-in .8s var(--ease-out) both; }
+.hero-in > *:nth-child(1) { animation-delay: .04s; }
+.hero-in > *:nth-child(2) { animation-delay: .12s; }
+.hero-in > *:nth-child(3) { animation-delay: .20s; }
+.hero-in > *:nth-child(4) { animation-delay: .28s; }
+.hero-in > *:nth-child(5) { animation-delay: .36s; }
+
+@keyframes toast-in { from { transform: translateY(16px) scale(.97); } to { transform: none; } }
+.toast-in { animation: toast-in .28s var(--ease-out) both; }
+
+@keyframes pop { 0% { transform: scale(1); } 45% { transform: scale(1.28); } 100% { transform: scale(1); } }
+.pop { animation: pop .34s var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .reveal[data-state="hidden"] { transform: none; }
+  .marquee__row { animation: none; }
+}
+
+/* ==========================================================================
+   Scrollbar — dark, unobtrusive
+   ========================================================================== */
+.scroll-thin { scrollbar-width: thin; scrollbar-color: var(--color-ink-600) transparent; }
+.scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: var(--color-ink-600); border-radius: 4px; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

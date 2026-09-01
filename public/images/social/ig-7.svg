@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="INSTAGRAM 7">
+  <defs>
+    <pattern id="d" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)">
+      <rect width="26" height="26" fill="#131519"/>
+      <rect width="3" height="26" fill="#ffffff" opacity=".030"/>
+    </pattern>
+    <linearGradient id="v" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".45"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#d)"/>
+  <rect width="600" height="600" fill="url(#v)"/>
+  <g transform="translate(300 300)">
+    <rect x="-2" y="-34" width="4" height="46" fill="#ff4a17" transform="skewX(-12)"/>
+    <text x="0" y="34" text-anchor="middle" fill="#a8b0bd"
+          font-family="Archivo,Arial Narrow,system-ui,sans-serif" font-size="15"
+          font-weight="700" letter-spacing="2.6" text-transform="uppercase">INSTAGRAM 7</text>
+    <text x="0" y="56" text-anchor="middle" fill="#565e6b"
+          font-family="Inter,system-ui,sans-serif" font-size="11">Replace with real photography</text>
+  </g>
+</svg>

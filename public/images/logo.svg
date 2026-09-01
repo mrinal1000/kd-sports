@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" role="img" aria-label="KD SPORTS">
+  <!-- Temporary wordmark. Drop the official logo in at this same path and the
+       whole site picks it up — see README.md. -->
+  <text x="0" y="30" font-family="Archivo,Arial Narrow,system-ui,sans-serif" font-size="34"
+        font-weight="800" letter-spacing="-1.4" fill="#ffffff">KD</text>
+  <rect x="52" y="4" width="4" height="30" fill="#ff4a17" transform="skewX(-12)"/>
+  <text x="66" y="30" font-family="Archivo,Arial Narrow,system-ui,sans-serif" font-size="34"
+        font-weight="800" letter-spacing="-1.4" fill="#ffffff">SPORTS</text>
+  <text x="0" y="50" font-family="Inter,system-ui,sans-serif" font-size="9.5"
+        font-weight="600" letter-spacing="4.2" fill="#7d8695">KHARAR · PUNJAB</text>
+</svg>

@@ -1,0 +1,17 @@
+# Dependencies — reinstalled with `npm install`
+node_modules/
+
+# Build output — regenerated with `npm run build`
+dist/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
