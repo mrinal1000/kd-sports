@@ -74,9 +74,9 @@ export function Navbar() {
             <img
               src={IMAGES.logo}
               alt="KD Sports"
-              width={200}
-              height={64}
-              className={`w-auto transition-[height] duration-300 ${solid ? "h-9" : "h-10 md:h-11"}`}
+              width={2121}
+              height={1005}
+              className={`w-auto transition-[height] duration-300 ${solid ? "h-10" : "h-12 md:h-14"}`}
             />
           </Link>
 

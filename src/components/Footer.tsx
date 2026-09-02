@@ -12,7 +12,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <img src={IMAGES.logo} alt="KD Sports" width={200} height={64} className="h-11 w-auto" />
+            <img src={IMAGES.logo} alt="KD Sports" width={2121} height={1005} className="h-14 w-auto" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-300">
               A cricket store in Kharar, Punjab. Bats, gloves, protection and kit for club and
               academy players. Run by {BUSINESS.proprietor}.

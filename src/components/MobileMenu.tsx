@@ -57,7 +57,7 @@ export function MobileMenu({
         }`}
       >
         <div className="flex items-center justify-between border-b border-ink-800 px-5 py-4">
-          <img src={IMAGES.logo} alt="KD Sports" width={200} height={64} className="h-9 w-auto" />
+          <img src={IMAGES.logo} alt="KD Sports" width={2121} height={1005} className="h-11 w-auto" />
           <button
             ref={closeRef}
             type="button"

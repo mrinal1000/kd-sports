@@ -27,19 +27,25 @@
   --color-ink-50:  #f4f5f7;
   --color-bone:    #fbfbfa;   /* off-white light sections */
 
-  /* --- THE accent. Blaze orange. -----------------------------------
-     Chosen over the usual acid-green because green on black is the default
-     "sports site" look; orange carries heat and reads as effort rather than
-     neon. Swap this one ramp for the real brand colour if there is one. */
-  --color-blaze-50:  #fff3ed;
-  --color-blaze-100: #ffe2d2;
-  --color-blaze-200: #ffc0a3;
-  --color-blaze-300: #ff9569;
-  --color-blaze-400: #ff6a35;
-  --color-blaze-500: #ff4a17;   /* primary accent */
-  --color-blaze-600: #e8360a;
-  --color-blaze-700: #b62808;
-  --color-blaze-800: #8f2109;
+  /* --- THE accent. The real KD Sports red. ------------------------
+     Sampled from the official logo (3x2.pdf): the brand red is #E3060F.
+     This replaces the blaze orange I had chosen before the logo existed.
+
+     The token names stay `blaze-*` so every existing utility class keeps
+     working — only the values changed. Two steps matter:
+       500  #e3060f  the brand red. Fills, buttons, the accent slash.
+       400  #f8434c  a lighter step for SMALL TEXT on the black ground —
+                     the true brand red only reaches ~3.8:1 against
+                     #08090b, which is under AA for body-sized text. */
+  --color-blaze-50:  #fff1f1;
+  --color-blaze-100: #ffdedf;
+  --color-blaze-200: #ffc2c5;
+  --color-blaze-300: #ff8f95;
+  --color-blaze-400: #f8434c;   /* small text on dark */
+  --color-blaze-500: #e3060f;   /* THE brand red */
+  --color-blaze-600: #c2050e;
+  --color-blaze-700: #9c060f;
+  --color-blaze-800: #7d0a11;
 
   --color-ok:   #16a34a;
   --color-warn: #d97706;
@@ -135,7 +141,8 @@ input, select, textarea { font: inherit; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  color: var(--color-accent);
+  /* the lighter step: the true brand red is under AA at this size on black */
+  color: var(--color-blaze-400);
 }
 
 .stat-num {

@@ -128,7 +128,10 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
  * ------------------------------------------------------------------ */
 
 export const IMAGES = {
+  /** Official logo, reversed (white KD) for the dark UI. */
   logo: "/images/logo.svg",
+  /** Official logo in original colours, for light grounds / print. */
+  logoLight: "/images/logo-light.svg",
   ogCover: "/images/og-cover.svg",
 
   hero: {
