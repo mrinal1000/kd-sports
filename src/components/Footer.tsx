@@ -14,8 +14,8 @@ export function Footer() {
           <div className="lg:col-span-2">
             <img src={IMAGES.logo} alt="KD Sports" width={200} height={64} className="h-11 w-auto" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-300">
-              Sports equipment and apparel for players, teams and anyone who takes their training
-              seriously. Run from Kharar, Punjab by {BUSINESS.proprietor}.
+              A cricket store in Kharar, Punjab. Bats, gloves, protection and kit for club and
+              academy players. Run by {BUSINESS.proprietor}.
             </p>
 
             <div className="mt-6 space-y-3 text-sm">

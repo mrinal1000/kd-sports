@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, Search, TrendingUp, X } from "lucide-react";
-import { POPULAR_SEARCHES, formatINR } from "@/config/site";
+import { POPULAR_SEARCHES, formatPrice } from "@/config/site";
 import { suggest } from "@/lib/catalog";
 
 /**
@@ -62,7 +62,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             value={term}
             onChange={(event) => setTerm(event.target.value)}
             type="search"
-            placeholder="Search bats, boots, jerseys…"
+            placeholder="Search bats, gloves, pads…"
             aria-label="Search products"
             className="h-16 w-full bg-transparent text-lg text-white outline-none placeholder:text-ink-500"
           />
@@ -121,7 +121,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                       </span>
                     </span>
                     <span className="flex-none font-display font-bold text-blaze-400">
-                      {formatINR(product.price)}
+                      {formatPrice(product.price)}
                     </span>
                   </button>
                 </li>
@@ -144,8 +144,8 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                 No matches for “{term}”
               </p>
               <p className="mx-auto mt-2 max-w-sm text-sm text-ink-400">
-                This is a demo catalogue, so it does not yet contain everything KD Sports stocks.
-                Browse the full range, or ask us directly.
+                This catalogue does not yet list everything in the shop. Browse the full range,
+                or ask us directly — if we have it, we will tell you.
               </p>
               <div className="mt-5 flex flex-wrap justify-center gap-2">
                 <button

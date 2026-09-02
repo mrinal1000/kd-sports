@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Mail, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
-import { BUSINESS, formatINR } from "@/config/site";
+import { BUSINESS, formatPrice } from "@/config/site";
 import { useStore } from "@/lib/store";
 
 /**
@@ -31,7 +31,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
   const orderBody = encodeURIComponent(
     `Hello KD Sports,\n\nI would like to order:\n\n${lines
       .map((line) => `• ${line.product.name}${line.size ? ` (${line.size})` : ""} × ${line.quantity}`)
-      .join("\n")}\n\nSubtotal: ${formatINR(subtotal)}\n\nPlease confirm availability and payment.\n\nThank you.`,
+      .join("\n")}\n\nSubtotal: ${formatPrice(subtotal)}\n\nPlease confirm availability and payment.\n\nThank you.`,
   );
 
   return (
@@ -107,7 +107,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                     </Link>
                     {line.size && <p className="mt-0.5 text-xs text-ink-400">Size: {line.size}</p>}
                     <p className="mt-1 font-display font-bold text-blaze-400">
-                      {formatINR(line.product.price)}
+                      {formatPrice(line.product.price)}
                     </p>
 
                     <div className="mt-3 flex items-center gap-3">
@@ -147,7 +147,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                     </div>
                   </div>
 
-                  <p className="flex-none font-display font-bold text-white">{formatINR(line.lineTotal)}</p>
+                  <p className="flex-none font-display font-bold text-white">{formatPrice(line.lineTotal)}</p>
                 </li>
               ))}
             </ul>
@@ -156,7 +156,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
               <dl className="mb-4 space-y-2 text-sm">
                 <div className="flex justify-between text-ink-300">
                   <dt>Subtotal</dt>
-                  <dd className="font-semibold text-white">{formatINR(subtotal)}</dd>
+                  <dd className="font-semibold text-white">{formatPrice(subtotal)}</dd>
                 </div>
                 <div className="flex justify-between text-ink-300">
                   <dt>Delivery</dt>
@@ -164,7 +164,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                 </div>
                 <div className="flex justify-between border-t border-ink-800 pt-2 font-display text-lg font-bold uppercase tracking-wide text-white">
                   <dt>Total</dt>
-                  <dd>{formatINR(subtotal)}</dd>
+                  <dd>{formatPrice(subtotal)}</dd>
                 </div>
               </dl>
 

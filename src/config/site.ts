@@ -79,37 +79,37 @@ export const SHORT_ADDRESS = `${BUSINESS.address.locality}, ${BUSINESS.address.d
 
 export const SITE = {
   url: todo("Live site URL", "e.g. https://kdsports.in — used for canonical and OG tags."),
-  defaultTitle: "KD SPORTS | Premium Sports Equipment & Apparel",
+  defaultTitle: "KD SPORTS | Cricket Bats, Gloves & Gear in Kharar, Punjab",
   defaultDescription:
-    "Discover sports equipment, apparel and performance gear from KD SPORTS, based in Kharar, Punjab.",
+    "A cricket store in Kharar, Punjab. Cricket bats from SS, TON and Gama, batting gloves, protection, balls, shoes and kit bags.",
   ogImage: "/images/og-cover.svg",
 } as const;
 
 export const PAGE_META: Record<string, { title: string; description: string }> = {
   home: {
-    title: "KD SPORTS | Premium Sports Equipment & Apparel",
+    title: "KD SPORTS | Cricket Bats, Gloves & Gear in Kharar, Punjab",
     description:
-      "Discover sports equipment, apparel and performance gear from KD SPORTS, based in Kharar, Punjab.",
+      "A cricket store in Kharar, Punjab. Cricket bats from SS, TON and Gama, batting gloves, protection, balls, shoes and kit bags.",
   },
   shop: {
-    title: "Shop All Gear | KD SPORTS",
+    title: "Shop Cricket Gear | KD SPORTS",
     description:
-      "Browse cricket, football, fitness and apparel from KD SPORTS. Filter by category, price and availability.",
+      "Browse every cricket bat, glove and piece of kit at KD SPORTS. Filter by range, price and availability.",
   },
   categories: {
-    title: "Sports Categories | KD SPORTS",
+    title: "Cricket Ranges | KD SPORTS",
     description:
-      "Cricket, football, fitness and training, and sports apparel from KD SPORTS, Kharar, Punjab.",
+      "Cricket bats, batting gloves, protection, balls, shoes and kit bags from KD SPORTS, Kharar, Punjab.",
   },
   about: {
-    title: "About KD SPORTS | Kharar, Punjab",
+    title: "About KD SPORTS | Cricket Store in Kharar, Punjab",
     description:
-      "KD SPORTS is a sports equipment and apparel business in Kharar, Punjab, run by Naresh Kumar.",
+      "KD SPORTS is a cricket store in Kharar, Punjab, run by Naresh Kumar. Bats, gloves, protection and kit for club and academy players.",
   },
   contact: {
-    title: "Contact KD SPORTS | Kharar, Punjab",
+    title: "Contact KD SPORTS | Cricket Store, Kharar",
     description:
-      "Get in touch with KD SPORTS in Kharar, SAS Nagar, Punjab. Email or reach us on Instagram.",
+      "Get in touch with KD SPORTS, a cricket store in Kharar, SAS Nagar, Punjab. Email or reach us on Instagram.",
   },
   cart: { title: "Your Bag | KD SPORTS", description: "Review the gear in your bag." },
   wishlist: { title: "Wishlist | KD SPORTS", description: "Gear you have saved for later." },
@@ -142,10 +142,12 @@ export const IMAGES = {
   brandStatement: "/images/brand-statement.svg",
 
   categories: {
-    cricket: "/images/cricket.svg",
-    football: "/images/football.svg",
-    fitness: "/images/fitness.svg",
-    apparel: "/images/apparel.svg",
+    bats: "/images/cat-bats.svg",
+    gloves: "/images/cat-gloves.svg",
+    protection: "/images/cat-protection.svg",
+    balls: "/images/cat-balls.svg",
+    footwear: "/images/cat-footwear.svg",
+    kit: "/images/cat-kit.svg",
   },
 
   /** Instagram grid stand-ins — see the note in InstagramGrid.tsx. */
@@ -175,11 +177,12 @@ export const NAV_LINKS = [
 
 export const FOOTER_NAV = {
   shop: [
-    { label: "Cricket", to: "/shop?category=cricket" },
-    { label: "Football", to: "/shop?category=football" },
-    { label: "Fitness", to: "/shop?category=fitness" },
-    { label: "Apparel", to: "/shop?category=apparel" },
-    { label: "All equipment", to: "/shop" },
+    { label: "Cricket Bats", to: "/shop?category=bats" },
+    { label: "Batting Gloves", to: "/shop?category=gloves" },
+    { label: "Protection", to: "/shop?category=protection" },
+    { label: "Cricket Balls", to: "/shop?category=balls" },
+    { label: "Shoes & Kit Bags", to: "/shop?category=footwear" },
+    { label: "Everything", to: "/shop" },
   ],
   company: [
     { label: "About", to: "/about" },
@@ -197,18 +200,31 @@ export const FOOTER_NAV = {
 
 /** Suggestions shown in the search overlay before anything is typed. */
 export const POPULAR_SEARCHES = [
-  "Cricket bat",
-  "Cricket shoes",
-  "Jerseys",
-  "Sports equipment",
-  "Training gear",
-  "Football",
+  "SS bat",
+  "TON Thala",
+  "Batting gloves",
+  "Cricket bat 85cm",
+  "Keeping gloves",
+  "Kit bag",
 ] as const;
 
 /**
- * Currency formatting. One implementation so a price can never be rendered
- * two different ways.
+ * Currency — INR.
+ *
+ * The compiled product sheet said "NPR", but the owner confirmed on
+ * 2026-09-02 that every price listed is **Indian Rupees**, which also matches
+ * the GST registration in Kharar, Punjab. The owner's word supersedes the
+ * sheet. Change this one constant to change every price on the site.
  */
-export function formatINR(amount: number): string {
-  return `₹${amount.toLocaleString("en-IN")}`;
+export const CURRENCY_SYMBOL = "₹";
+
+/**
+ * One price formatter, used everywhere. A null price is genuinely unknown —
+ * it renders as "Price on request" rather than as a number, and never as 0.
+ * en-IN grouping gives the lakh/crore comma pattern Indian shoppers expect
+ * (₹13,000 / ₹1,24,000).
+ */
+export function formatPrice(amount: number | null): string {
+  if (amount === null) return "Price on request";
+  return `${CURRENCY_SYMBOL}${amount.toLocaleString("en-IN")}`;
 }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
-import { BUSINESS, PAGE_META, formatINR } from "@/config/site";
+import { BUSINESS, PAGE_META, formatPrice } from "@/config/site";
 import { useStore } from "@/lib/store";
 import { Button, ButtonAnchor, ButtonLink } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
@@ -23,11 +23,11 @@ export function Cart() {
             " x " +
             line.quantity +
             " — " +
-            formatINR(line.lineTotal),
+            formatPrice(line.lineTotal),
         )
         .join("\n") +
       "\n\nSubtotal: " +
-      formatINR(subtotal) +
+      formatPrice(subtotal) +
       "\n\nPlease confirm availability, total and delivery.\n\nThank you.",
   );
 
@@ -84,7 +84,7 @@ export function Cart() {
                       </h2>
                       {line.size && <p className="mt-1 text-sm text-ink-400">Size: {line.size}</p>}
                       <p className="mt-2 font-display text-lg font-bold text-white">
-                        {formatINR(line.product.price)}
+                        {formatPrice(line.product.price)}
                       </p>
 
                       <div className="mt-auto flex flex-wrap items-center gap-3 pt-4">
@@ -123,7 +123,7 @@ export function Cart() {
                     </div>
 
                     <p className="hidden flex-none font-display text-lg font-bold text-white sm:block">
-                      {formatINR(line.lineTotal)}
+                      {formatPrice(line.lineTotal)}
                     </p>
                   </li>
                 ))}
@@ -146,7 +146,7 @@ export function Cart() {
                 <dl className="space-y-3 text-sm">
                   <div className="flex justify-between text-ink-300">
                     <dt>Subtotal</dt>
-                    <dd className="font-semibold text-white">{formatINR(subtotal)}</dd>
+                    <dd className="font-semibold text-white">{formatPrice(subtotal)}</dd>
                   </div>
                   <div className="flex justify-between text-ink-300">
                     <dt>Estimated delivery</dt>
@@ -154,7 +154,7 @@ export function Cart() {
                   </div>
                   <div className="flex justify-between border-t border-ink-800 pt-3 font-display text-xl font-bold uppercase text-white">
                     <dt>Total</dt>
-                    <dd>{formatINR(subtotal)}</dd>
+                    <dd>{formatPrice(subtotal)}</dd>
                   </div>
                 </dl>
 

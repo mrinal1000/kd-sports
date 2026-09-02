@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ShoppingBag, X } from "lucide-react";
-import { formatINR } from "@/config/site";
+import { formatPrice } from "@/config/site";
 import type { Product } from "@/data/types";
 import { useStore } from "@/lib/store";
 import { Badge, Rating } from "./ui/primitives";
 import { WishlistButton } from "./ProductCard";
+import { ProductImage } from "./ProductImage";
 
 /** A fast look at a product without leaving the grid. Escape or the backdrop closes it. */
 export function QuickView({ product, onClose }: { product: Product | null; onClose: () => void }) {
@@ -46,13 +47,7 @@ export function QuickView({ product, onClose }: { product: Product | null; onClo
         </button>
 
         <div className="aspect-[4/5] bg-ink-850">
-          <img
-            src={product.images[0]}
-            alt={product.name}
-            width={900}
-            height={1100}
-            className="size-full object-cover"
-          />
+          <ProductImage src={product.images[0]} alt={product.name} className="size-full object-cover" />
         </div>
 
         <div className="flex flex-col p-6">
@@ -60,13 +55,20 @@ export function QuickView({ product, onClose }: { product: Product | null; onClo
             {product.category} · {product.subcategory}
           </p>
           <h2 className="headline mb-3 text-2xl text-white">{product.name}</h2>
-          <Rating value={product.rating} reviews={product.reviews} className="mb-4" />
+          {typeof product.rating === "number" && (
+            <Rating value={product.rating} reviews={product.reviews} className="mb-4" />
+          )}
 
           <div className="mb-4 flex items-baseline gap-2.5">
-            <span className="font-display text-2xl font-bold text-white">{formatINR(product.price)}</span>
-            {product.oldPrice && (
-              <span className="text-ink-500 line-through">{formatINR(product.oldPrice)}</span>
+            <span
+              className={`font-display font-bold text-white ${product.price === null ? "text-lg text-ink-300" : "text-2xl"}`}
+            >
+              {formatPrice(product.price)}
+            </span>
+            {product.price !== null && product.oldPrice && (
+              <span className="text-ink-500 line-through">{formatPrice(product.oldPrice)}</span>
             )}
+            {product.demo && <Badge tone="muted">Demo</Badge>}
             {!product.inStock && <Badge tone="dark">Out of stock</Badge>}
           </div>
 
@@ -98,18 +100,28 @@ export function QuickView({ product, onClose }: { product: Product | null; onClo
           )}
 
           <div className="mt-auto flex gap-2">
-            <button
-              type="button"
-              disabled={!product.inStock}
-              onClick={() => {
-                addToCart(product.id, size);
-                onClose();
-              }}
-              className="flex h-12 flex-1 items-center justify-center gap-2 rounded-sm bg-blaze-500 font-display text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-blaze-400 disabled:pointer-events-none disabled:opacity-50"
-            >
-              <ShoppingBag size={16} />
-              {product.inStock ? "Add to bag" : "Out of stock"}
-            </button>
+            {product.price === null ? (
+              <Link
+                to="/contact"
+                onClick={onClose}
+                className="flex h-12 flex-1 items-center justify-center gap-2 rounded-sm bg-blaze-500 font-display text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-blaze-400"
+              >
+                Ask for a price
+              </Link>
+            ) : (
+              <button
+                type="button"
+                disabled={!product.inStock}
+                onClick={() => {
+                  addToCart(product.id, size);
+                  onClose();
+                }}
+                className="flex h-12 flex-1 items-center justify-center gap-2 rounded-sm bg-blaze-500 font-display text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-blaze-400 disabled:pointer-events-none disabled:opacity-50"
+              >
+                <ShoppingBag size={16} />
+                {product.inStock ? "Add to bag" : "Out of stock"}
+              </button>
+            )}
             <WishlistButton
               productId={product.id}
               className="size-12 flex-none border border-ink-700 text-white hover:border-white"

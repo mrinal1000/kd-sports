@@ -72,25 +72,29 @@ export function queryProducts(query: CatalogQuery): Product[] {
   if (query.category && query.category !== "all") {
     results = results.filter((product) => product.category === query.category);
   }
+  // A product with no confirmed price cannot be claimed to fall inside a price
+  // band, so it is excluded from a price-filtered result rather than guessed at.
   if (typeof query.minPrice === "number") {
-    results = results.filter((product) => product.price >= query.minPrice!);
+    results = results.filter((product) => product.price !== null && product.price >= query.minPrice!);
   }
   if (typeof query.maxPrice === "number") {
-    results = results.filter((product) => product.price <= query.maxPrice!);
+    results = results.filter((product) => product.price !== null && product.price <= query.maxPrice!);
   }
   if (query.inStockOnly) {
     results = results.filter((product) => product.inStock);
   }
 
   switch (query.sort) {
+    // Unpriced items sort to the end either way — they have no position on a
+    // price axis, so they should not lead the list in either direction.
     case "price-asc":
-      results.sort((a, b) => a.price - b.price);
+      results.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
       break;
     case "price-desc":
-      results.sort((a, b) => b.price - a.price);
+      results.sort((a, b) => (b.price ?? -Infinity) - (a.price ?? -Infinity));
       break;
     case "rating":
-      results.sort((a, b) => b.rating - a.rating);
+      results.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
       break;
     case "newest":
       results.reverse();

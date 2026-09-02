@@ -49,13 +49,13 @@ export function About() {
           <Reveal delay={100}>
             <h2 className="headline text-3xl text-white md:text-4xl">
               <span className="slash" aria-hidden="true" />
-              A sports business in Kharar
+              A cricket store in Kharar
             </h2>
             <div className="mt-6 space-y-4 leading-relaxed text-ink-300">
               <p>
-                KD Sports supplies sports equipment and apparel from Kharar, in SAS Nagar district,
-                Punjab. Cricket and football gear, fitness and training equipment, and team wear
-                for clubs, academies and individual players.
+                KD Sports is a cricket store in Kharar, in SAS Nagar district, Punjab. Bats,
+                batting and keeping gloves, protection, balls, shoes and kit bags — for club
+                sides, academies and individual players.
               </p>
               <p>
                 The business is founded and run by{" "}
@@ -121,7 +121,7 @@ export function About() {
               {
                 icon: <Users size={22} strokeWidth={1.6} />,
                 title: "The local game",
-                body: "Serving players, clubs and academies across Kharar, Mohali and the wider Punjab.",
+                body: "Serving cricketers, clubs and academies across Kharar, Mohali and the wider Punjab.",
               },
               {
                 icon: <Handshake size={22} strokeWidth={1.6} />,
@@ -149,7 +149,7 @@ export function About() {
             What we stock
           </h2>
           <p className="mb-8 max-w-2xl text-ink-300">
-            Four categories, each with the sub-ranges players actually ask for.
+            Six cricket ranges, each with the sub-ranges players actually ask for.
           </p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {CATEGORIES.map((category) => (
@@ -164,7 +164,7 @@ export function About() {
             ))}
           </div>
           <p className="mt-5 text-xs text-ink-500">
-            Category list to be confirmed with KD Sports — see the note on the Categories page.
+            Bats and gloves are real stock. The other ranges are placeholders until real products arrive — see the note on the Categories page.
           </p>
         </section>
 

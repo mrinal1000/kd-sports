@@ -2,75 +2,93 @@ import { IMAGES } from "@/config/site";
 import type { Category } from "./types";
 
 /**
- * Sports categories.
+ * KD SPORTS is a CRICKET STORE. Nothing else.
  *
- * ⚠️ CONFIRM WITH THE OWNER. The Instagram account could not be read
- * (login-walled) and the handle is not indexed by search, so which
- * disciplines KD SPORTS actually stocks is unknown. These four are the
- * categories named in the brief, structured so unused ones can be deleted in
- * one place — remove a category here and it disappears from the navigation,
- * the home page, the shop filters and the footer at once.
+ * The categories below are cricket sub-ranges, not different sports. Football,
+ * fitness and apparel were removed on the owner's instruction (2026-09-02):
+ * "this is cricket store only".
+ *
+ * Bats and Gloves hold the owner's real stock. The rest hold demo placeholders
+ * until real products arrive — Helmets is listed because the owner has said
+ * they are coming, and it renders as "coming soon" rather than pretending to
+ * have stock.
  */
 export const CATEGORIES: Category[] = [
   {
-    slug: "cricket",
-    name: "Cricket",
-    tagline: "Bat, ball, pads, everything between",
+    slug: "bats",
+    name: "Cricket Bats",
+    tagline: "English and Kashmir willow",
     description:
-      "Willow, leather and protection for club players, academy sides and anyone who takes guard on a Sunday morning.",
-    image: IMAGES.categories.cricket,
+      "SS, TON and Gama bats in the shop right now, sized and ready to pick up. Come in and we will weigh the exact one you are looking at.",
+    image: IMAGES.categories.bats,
     subcategories: [
-      { slug: "bats", name: "Cricket Bats" },
-      { slug: "balls", name: "Cricket Balls" },
-      { slug: "gloves", name: "Batting Gloves" },
+      { slug: "ss", name: "SS" },
+      { slug: "ton", name: "TON" },
+      { slug: "gama", name: "Gama" },
+      { slug: "master", name: "Master" },
+    ],
+  },
+  {
+    slug: "gloves",
+    name: "Batting Gloves",
+    tagline: "Fit first, everything else after",
+    description:
+      "Batting and keeping gloves. Fit matters more than anything on the label — try a pair on, or tell us your size and we will say what we have.",
+    image: IMAGES.categories.gloves,
+    subcategories: [
+      { slug: "batting", name: "Batting Gloves" },
+      { slug: "keeping", name: "Wicket-Keeping Gloves" },
+    ],
+  },
+  {
+    slug: "protection",
+    name: "Protection",
+    tagline: "Pads, helmets, guards",
+    description:
+      "Batting pads, helmets and guards. Protection is the one place not to save money — a helmet that fits badly protects badly.",
+    image: IMAGES.categories.protection,
+    subcategories: [
       { slug: "pads", name: "Batting Pads" },
       { slug: "helmets", name: "Helmets" },
-      { slug: "shoes", name: "Cricket Shoes" },
-      { slug: "jerseys", name: "Jerseys" },
-      { slug: "training", name: "Training Equipment" },
+      { slug: "guards", name: "Thigh & Arm Guards" },
     ],
   },
   {
-    slug: "football",
-    name: "Football",
-    tagline: "For the turf and the tarmac",
+    slug: "balls",
+    name: "Cricket Balls",
+    tagline: "Leather, training, tennis",
     description:
-      "Match balls, boots and kit for eleven-a-side, five-a-side and everything played on whatever ground is free.",
-    image: IMAGES.categories.football,
+      "Match leather balls by the piece or the box, plus training and tennis balls for nets and practice.",
+    image: IMAGES.categories.balls,
     subcategories: [
-      { slug: "footballs", name: "Footballs" },
-      { slug: "shoes", name: "Football Shoes" },
-      { slug: "jerseys", name: "Jerseys" },
-      { slug: "training", name: "Training Equipment" },
+      { slug: "leather", name: "Leather Balls" },
+      { slug: "training", name: "Training Balls" },
+      { slug: "tennis", name: "Tennis Balls" },
     ],
   },
   {
-    slug: "fitness",
-    name: "Fitness & Training",
-    tagline: "The work nobody watches",
+    slug: "footwear",
+    name: "Cricket Shoes",
+    tagline: "Spikes and rubber soles",
     description:
-      "Resistance, conditioning and recovery gear for the sessions that happen between match days.",
-    image: IMAGES.categories.fitness,
+      "Spikes for grass and rubber soles for matting and hard grounds, in the sizes club players actually ask for.",
+    image: IMAGES.categories.footwear,
     subcategories: [
-      { slug: "gym", name: "Gym Accessories" },
-      { slug: "training-gear", name: "Training Gear" },
-      { slug: "resistance", name: "Resistance Equipment" },
-      { slug: "accessories", name: "Fitness Accessories" },
+      { slug: "spikes", name: "Spikes" },
+      { slug: "rubber", name: "Rubber Sole" },
     ],
   },
   {
-    slug: "apparel",
-    name: "Sports Apparel",
-    tagline: "Kit that survives the season",
+    slug: "kit",
+    name: "Kit Bags & Accessories",
+    tagline: "Carrying it all to the ground",
     description:
-      "Jerseys, tracksuits and team wear built for training loads, washing machines and Punjab summers.",
-    image: IMAGES.categories.apparel,
+      "Kit bags, grips, toe guards and the small things you only remember on match morning.",
+    image: IMAGES.categories.kit,
     subcategories: [
-      { slug: "jerseys", name: "Jerseys" },
-      { slug: "tshirts", name: "T-Shirts" },
-      { slug: "shorts", name: "Shorts" },
-      { slug: "tracksuits", name: "Tracksuits" },
-      { slug: "teamwear", name: "Team Wear" },
+      { slug: "bags", name: "Kit Bags" },
+      { slug: "grips", name: "Grips & Toe Guards" },
+      { slug: "accessories", name: "Accessories" },
     ],
   },
 ];

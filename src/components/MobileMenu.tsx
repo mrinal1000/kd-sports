@@ -103,7 +103,7 @@ export function MobileMenu({
           </nav>
 
           <div className="px-5 py-6">
-            <p className="eyebrow mb-3">Shop by sport</p>
+            <p className="eyebrow mb-3">Shop by range</p>
             <ul className="grid grid-cols-2 gap-2">
               {CATEGORIES.map((category) => (
                 <li key={category.slug}>

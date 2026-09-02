@@ -13,15 +13,16 @@ import {
   ShoppingBag,
   Truck,
 } from "lucide-react";
-import { BUSINESS, formatINR } from "@/config/site";
+import { BUSINESS, formatPrice } from "@/config/site";
 import { DEMO_CATALOGUE_NOTICE } from "@/data/products";
 import { getProductBySlug, getRelated } from "@/lib/catalog";
 import { useStore } from "@/lib/store";
-import { Badge, Button, ButtonAnchor, Rating, Reveal } from "@/components/ui/primitives";
+import { Badge, Button, ButtonAnchor, ButtonLink, Rating, Reveal } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { PageHeader } from "@/components/PageHeader";
 import { ProductCard, WishlistButton } from "@/components/ProductCard";
+import { ProductImage } from "@/components/ProductImage";
 import { NotFound } from "./NotFound";
 
 export function ProductDetail() {
@@ -44,7 +45,7 @@ export function ProductDetail() {
 
   const related = getRelated(product, 4);
   const discount =
-    product.oldPrice && product.oldPrice > product.price
+    product.price !== null && product.oldPrice && product.oldPrice > product.price
       ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
       : null;
 
@@ -72,12 +73,11 @@ export function ProductDetail() {
           {/* ── Gallery ─────────────────────────────────────────────── */}
           <div>
             <div className="relative aspect-[4/5] overflow-hidden bg-ink-850">
-              <img
+              <ProductImage
                 key={activeImage}
                 src={product.images[activeImage]}
                 alt={`${product.name} — view ${activeImage + 1} of ${product.images.length}`}
-                width={900}
-                height={1100}
+                loading="eager"
                 fetchPriority="high"
                 className="size-full object-cover"
               />
@@ -101,14 +101,7 @@ export function ProductDetail() {
                       activeImage === index ? "border-blaze-500" : "border-ink-800 hover:border-ink-600"
                     }`}
                   >
-                    <img
-                      src={image}
-                      alt=""
-                      width={200}
-                      height={200}
-                      loading="lazy"
-                      className="size-full object-cover"
-                    />
+                    <ProductImage src={image} alt="" width={200} height={200} className="size-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -122,13 +115,20 @@ export function ProductDetail() {
             </p>
             <h2 className="headline mb-4 text-3xl text-white md:text-4xl">{product.name}</h2>
 
-            <Rating value={product.rating} reviews={product.reviews} className="mb-5" />
+            {typeof product.rating === "number" && (
+              <Rating value={product.rating} reviews={product.reviews} className="mb-5" />
+            )}
 
             <div className="mb-6 flex flex-wrap items-baseline gap-3">
-              <span className="font-display text-4xl font-bold text-white">{formatINR(product.price)}</span>
-              {product.oldPrice && (
-                <span className="text-lg text-ink-500 line-through">{formatINR(product.oldPrice)}</span>
+              <span
+                className={`font-display font-bold text-white ${product.price === null ? "text-2xl text-ink-300" : "text-4xl"}`}
+              >
+                {formatPrice(product.price)}
+              </span>
+              {product.price !== null && product.oldPrice && (
+                <span className="text-lg text-ink-500 line-through">{formatPrice(product.oldPrice)}</span>
               )}
+              {product.demo && <Badge tone="muted">Demo listing</Badge>}
               {product.inStock ? (
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-ok">
                   <Check size={15} strokeWidth={3} /> In stock
@@ -193,15 +193,22 @@ export function ProductDetail() {
             </div>
 
             <div className="mb-4 flex gap-3">
-              <Button
-                size="lg"
-                disabled={!product.inStock}
-                onClick={() => addToCart(product.id, size, quantity)}
-                className="flex-1"
-              >
-                <ShoppingBag size={18} />
-                {product.inStock ? "Add to bag" : "Out of stock"}
-              </Button>
+              {product.price === null ? (
+                <ButtonLink to="/contact" size="lg" className="flex-1">
+                  <Mail size={18} />
+                  Ask for a price
+                </ButtonLink>
+              ) : (
+                <Button
+                  size="lg"
+                  disabled={!product.inStock}
+                  onClick={() => addToCart(product.id, size, quantity)}
+                  className="flex-1"
+                >
+                  <ShoppingBag size={18} />
+                  {product.inStock ? "Add to bag" : "Out of stock"}
+                </Button>
+              )}
               <WishlistButton
                 productId={product.id}
                 className="size-14 flex-none border border-ink-700 text-white hover:border-white"

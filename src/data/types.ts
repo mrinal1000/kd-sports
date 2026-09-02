@@ -7,7 +7,18 @@
  * component reads a data file directly.
  */
 
-export type CategorySlug = "cricket" | "football" | "fitness" | "apparel";
+/**
+ * KD Sports is a cricket store, so these are cricket sub-ranges rather than
+ * different sports. Football, fitness and apparel were removed on the owner's
+ * instruction (2026-09-02).
+ */
+export type CategorySlug =
+  | "bats"
+  | "gloves"
+  | "protection"
+  | "balls"
+  | "footwear"
+  | "kit";
 
 export interface Subcategory {
   slug: string;
@@ -36,19 +47,32 @@ export interface Product {
   subcategory: string;
   /** Brand of the item itself, where relevant. Never a claim of partnership. */
   brand?: string;
-  price: number;
+  /** Stock code, where the owner supplied one. */
+  sku?: string;
+  /**
+   * NULL means the price is genuinely not known yet — the UI shows
+   * "Price on request" and routes to an enquiry. Never coerce null to 0.
+   */
+  price: number | null;
   /** Pre-discount price. Omitted when the item is not discounted. */
   oldPrice?: number;
   images: string[];
   shortDescription: string;
   description: string;
   /**
-   * DEMO VALUES. These are not real ratings — KD SPORTS has no review data
-   * yet. They exist so the UI can be judged, and are surfaced with a demo
-   * notice. Replace with real review data before publishing.
+   * TRUE when this whole record is placeholder content invented for layout.
+   * FALSE for products supplied by the owner. The UI badges demo items and
+   * only shows the demo-catalogue notice where one is present, so real stock
+   * is never tarred with the same brush.
    */
-  rating: number;
-  reviews: number;
+  demo: boolean;
+  /**
+   * Ratings are DEMO ONLY and are omitted entirely on real products — KD
+   * Sports has no review data, so a real bat must not carry an invented star
+   * rating next to its real price.
+   */
+  rating?: number;
+  reviews?: number;
   sizes?: string[];
   inStock: boolean;
   featured?: boolean;

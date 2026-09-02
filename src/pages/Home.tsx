@@ -27,15 +27,16 @@ import {
   TrustCard,
 } from "@/components/sections";
 
+/** The marquee reads as a kit list, because this is a cricket shop. */
 const DISCIPLINES = [
-  "Cricket",
-  "Football",
-  "Fitness",
-  "Training",
-  "Team wear",
-  "Protection",
-  "Footwear",
-  "Accessories",
+  "Bats",
+  "Gloves",
+  "Pads",
+  "Helmets",
+  "Balls",
+  "Shoes",
+  "Kit bags",
+  "Grips",
 ];
 
 export function Home() {
@@ -87,7 +88,7 @@ export function Home() {
             </h1>
 
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-ink-200">
-              Gear up for performance. Built for athletes who don&rsquo;t settle.
+              Bats, gloves and kit for cricketers who don&rsquo;t settle. Kharar, Punjab.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -96,12 +97,12 @@ export function Home() {
                 <ArrowRight size={17} />
               </ButtonLink>
               <ButtonLink to="/categories" variant="outline" size="lg">
-                Explore sports
+                Explore the range
               </ButtonLink>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <Stat value="4" label="Sport categories" />
+              <Stat value="19" label="Bats in stock" />
               <Divider />
               <Stat value="GST" label="Registered business" />
               <Divider />
@@ -160,9 +161,9 @@ export function Home() {
                 <span className="text-blaze-500">Made for the grind.</span>
               </h2>
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-ink-300">
-                KD Sports supplies equipment and apparel to players, teams and sports enthusiasts
-                across Kharar and the wider Punjab. Bats and boots for match day, resistance gear
-                for the sessions nobody watches, and team kit that survives a full season.
+                KD Sports is a cricket shop in Kharar. Bats from SS, TON and Gama, batting and
+                keeping gloves, pads, helmets, balls, shoes and the kit bag to carry it all —
+                stocked for club players, academy sides and anyone who takes guard on a Sunday.
               </p>
               <p className="mt-4 max-w-lg leading-relaxed text-ink-400">
                 Run by {BUSINESS.proprietor} — a proprietorship, which means the person choosing
@@ -203,9 +204,9 @@ export function Home() {
       <section className="border-t border-ink-800 py-24 md:py-32">
         <div className="container-kd">
           <SectionHeading
-            eyebrow="Shop by sport"
-            title={<>Find your discipline</>}
-            lede="Four categories, each stocked for the people who actually play — not just the people who browse."
+            eyebrow="Shop by range"
+            title={<>Shop the kit bag</>}
+            lede="Everything a cricketer needs, stocked for people who actually play — not just people who browse."
             action={
               <ButtonLink to="/categories" variant="outline" size="sm">
                 All categories <ArrowRight size={15} />

@@ -14,16 +14,16 @@ export function Categories() {
       <Seo {...PAGE_META.categories} />
       <PageHeader
         eyebrow="Categories"
-        title="Every sport we stock"
-        lede="Four disciplines, each broken down into what you actually search for."
+        title="Every cricket range we stock"
+        lede="Six cricket ranges, each broken down into what you actually search for."
         crumbs={[{ label: "Categories" }]}
       />
 
       <div className="container-kd py-12 md:py-16">
         <p className="mb-10 max-w-3xl rounded-sm border border-dashed border-ink-600 bg-ink-900/60 px-5 py-4 text-sm leading-relaxed text-ink-300">
-          <strong className="text-white">To be confirmed with KD Sports.</strong> These categories
-          come from the brief, not from the shop&rsquo;s actual stock list — the Instagram account
-          could not be read. Confirm which of these are really carried, and delete the rest in{" "}
+          <strong className="text-white">Bats and Gloves are real stock.</strong> The other four
+          ranges are placeholders until real products arrive — Helmets in particular have been
+          mentioned but not yet supplied. Confirm what is genuinely carried and delete the rest in{" "}
           <code className="text-ink-400">src/data/categories.ts</code>.
         </p>
 

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Search, SlidersHorizontal, X } from "lucide-react";
-import { PAGE_META, formatINR } from "@/config/site";
+import { PAGE_META, formatPrice } from "@/config/site";
 import { CATEGORIES } from "@/data/categories";
 import { DEMO_CATALOGUE_NOTICE, PRICE_BOUNDS } from "@/data/products";
 import type { CategorySlug, Product, SortKey } from "@/data/types";
@@ -41,9 +41,27 @@ export function Shop() {
   const maxPrice = Number(params.get("maxPrice") ?? PRICE_BOUNDS.max);
   const inStockOnly = params.get("inStock") === "1";
 
+  /**
+   * Only send maxPrice when the slider has actually been narrowed.
+   *
+   * A product with no confirmed price is excluded from a price-filtered
+   * result (it cannot be claimed to sit inside a band). The slider defaults to
+   * the top of the range, so passing it unconditionally silently hid every
+   * unpriced item from the shop and from search. At full range there is no
+   * price filter, so none is sent.
+   */
+  const priceFiltered = maxPrice < PRICE_BOUNDS.max;
+
   const results = useMemo(
-    () => queryProducts({ search, category, maxPrice, inStockOnly, sort }),
-    [search, category, maxPrice, inStockOnly, sort],
+    () =>
+      queryProducts({
+        search,
+        category,
+        maxPrice: priceFiltered ? maxPrice : undefined,
+        inStockOnly,
+        sort,
+      }),
+    [search, category, maxPrice, priceFiltered, inStockOnly, sort],
   );
 
   // A changed filter should start the list again from the top.
@@ -64,16 +82,16 @@ export function Shop() {
   }
 
   const activeFilters =
-    (category !== "all" ? 1 : 0) + (inStockOnly ? 1 : 0) + (maxPrice < PRICE_BOUNDS.max ? 1 : 0);
+    (category !== "all" ? 1 : 0) + (inStockOnly ? 1 : 0) + (priceFiltered ? 1 : 0);
 
   const filters = (
     <div className="space-y-8">
       <div>
         <h3 className="mb-3 font-display text-[0.72rem] font-bold uppercase tracking-[0.2em] text-white">
-          Category
+          Range
         </h3>
         <ul className="space-y-1">
-          {[{ slug: "all", name: "All sports" }, ...CATEGORIES].map((item) => (
+          {[{ slug: "all", name: "All cricket gear" }, ...CATEGORIES].map((item) => (
             <li key={item.slug}>
               <button
                 type="button"
@@ -103,13 +121,18 @@ export function Shop() {
           step={100}
           value={maxPrice}
           onChange={(event) => update("maxPrice", event.target.value)}
-          aria-label={`Maximum price, currently ${formatINR(maxPrice)}`}
+          aria-label={`Maximum price, currently ${formatPrice(maxPrice)}`}
           className="w-full accent-blaze-500"
         />
         <div className="mt-2 flex justify-between text-xs text-ink-400">
-          <span>{formatINR(PRICE_BOUNDS.min)}</span>
-          <span className="font-semibold text-white">{formatINR(maxPrice)}</span>
+          <span>{formatPrice(PRICE_BOUNDS.min)}</span>
+          <span className="font-semibold text-white">{formatPrice(maxPrice)}</span>
         </div>
+        {priceFiltered && (
+          <p className="mt-2 text-xs leading-relaxed text-ink-500">
+            Items with no listed price are hidden while a price filter is on.
+          </p>
+        )}
       </div>
 
       <div>

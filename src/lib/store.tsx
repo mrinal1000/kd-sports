@@ -200,7 +200,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       cart.flatMap((line) => {
         const product = getProductById(line.productId);
         if (!product) return [];
-        return [{ ...line, product, lineTotal: product.price * line.quantity }];
+        // Unpriced items cannot be added through the UI (the card offers
+        // "Enquire" instead), so this only guards against a stale stored line.
+        return [{ ...line, product, lineTotal: (product.price ?? 0) * line.quantity }];
       }),
     [cart],
   );

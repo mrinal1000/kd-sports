@@ -21,7 +21,7 @@ That means the following are taken from your brief, **not** from the business:
 
 | Thing | Status |
 |---|---|
-| The four sport categories | From the brief — **confirm what is actually stocked** |
+| ~~The four sport categories~~ | **Resolved** — cricket only, six ranges |
 | Brand accent colour (blaze orange) | **My choice.** No brand colour was visible |
 | Every product, price and rating | Demo placeholders — see below |
 | Product photography | Generated stand-ins |
@@ -53,34 +53,86 @@ bottom of the footer, as you asked.
 
 ---
 
-## 2. Categories — confirm before publishing
+## 2. Categories — now CRICKET ONLY
 
-`src/data/categories.ts` defines Cricket, Football, Fitness & Training, and
-Sports Apparel, each with sub-ranges.
+On your instruction (2026-09-02) football, fitness and apparel were removed
+completely. `src/data/categories.ts` now holds six **cricket ranges**:
 
-**Delete any category KD Sports does not actually stock.** Removing one there
-removes it from the navigation, home page, shop filters, footer and the 404
-page at once.
+| Range | Products | Status |
+|---|---|---|
+| Cricket Bats | 19 | **Real stock** |
+| Batting Gloves | 4 | **Real stock** |
+| Protection | 2 | Demo — pads, helmet |
+| Cricket Balls | 1 | Demo |
+| Cricket Shoes | 1 | Demo |
+| Kit Bags & Accessories | 1 | Demo |
 
-If the real business is, say, cricket-only, this page should say so — a shop
-that advertises football gear it does not carry loses the customer at the door.
+13 non-cricket products were deleted, along with their category images. Every
+mention of football, fitness, apparel, tracksuits and jerseys is gone from the
+navigation, home page, shop filters, footer, About page, search suggestions,
+page titles and meta descriptions — verified with a text scan of every route.
+
+**Helmets** are listed under Protection because you mentioned they are coming,
+but nothing has been supplied, so that entry is a demo placeholder rather than
+a claim of stock.
 
 ---
 
-## 3. The product catalogue
+## 3. The product catalogue — 23 items are now REAL
 
-`src/data/products.ts` holds **21 demo products**. Every one is generic and
-category-typical — "English Willow Match Bat", not a specific model — and no
-real brand is presented as a supplier.
+`src/data/products.ts` holds **41 products: 23 real, 18 demo.**
 
-Prices, ratings and review counts are illustrative. A "demo catalogue" notice
-appears above every product grid so nobody mistakes them for real figures.
+**Real (`demo: false`)** — 19 cricket bats and 4 batting gloves, loaded straight
+from your product data sheet. Names, brands, prices, sizes and SKUs are exactly
+as supplied; I generated the file from the JSON rather than retyping, and
+verified every supplied price appears in the code.
 
-To replace with the real catalogue:
+Rules from your sheet, all enforced:
 
-1. Keep the shape defined in `src/data/types.ts` — every screen reads through it
-2. Put photos in `public/images/products/` and point each `images` array at them
-3. Delete `DEMO_CATALOGUE_NOTICE` to remove the banner site-wide
+- Willow, grade, weight and grains are **not listed on any bat** — the sheet has
+  them null, so they are not invented. Spec tables show only Brand, Size and SKU.
+- `brand` is **absent** on Master 1500, Master 5000 and Tilak Varma Trigger
+  Edition, because the source name did not state one. Your sheet notes the two
+  Masters are probably SS — **confirm before I set it.**
+- The cream keeping gloves have `price: null` and render as **"Price on
+  request"** with an "Ask for a price" button instead of Add to Bag. Never
+  coerced to 0.
+- **Real products carry no star rating.** KD Sports has no review data, so a
+  real bat must not show an invented rating next to a real price. Only demo
+  items have stars.
+
+**Demo (`demo: true`)** — the remaining 18 (football, fitness, apparel, plus
+cricket balls/pads/helmet/shoes/bag) are still placeholders, each badged
+**"Demo"** on its card. Delete or replace them as real stock arrives.
+
+### ⚠️ Two things to confirm
+
+**1. Currency — RESOLVED.** The compiled sheet said NPR, but the owner
+confirmed on 2026-09-02 that all listed prices are **Indian Rupees**, matching
+the Punjab GST registration. The site shows `₹24,000` with en-IN lakh grouping.
+`CURRENCY_SYMBOL` in `src/config/site.ts` is the single switch.
+
+**2. The photos are not on this machine.** The catalogue points at the exact
+filenames your `rename-bats.sh` produces (`ss-sky-blaster-1.jpg` etc.), but the
+files are not in `public/images/products/` yet. Until they are, `ProductImage`
+falls back to a placeholder rather than showing broken images. To finish:
+
+```bash
+# in the folder holding the 19 screenshots
+bash rename-bats.sh
+# then copy renamed/*.jpg into public/images/products/
+```
+
+The 4 glove photos need the same treatment —
+`batting-gloves-player-edition-1..4.jpg`, `-test-series-1..3.jpg`,
+`-prestige-1..3.jpg`, `gloves-keeping-cream-1.jpg`.
+
+### Still open from your sheet
+
+- Keeping gloves: name and price
+- IMG_3002/3003/3004 (.HEIC): one unidentified product, three angles
+- Helmets: mentioned but nothing sent — the category exists with count 0
+- Bats 09–19 have no size recorded
 
 Each product supports: `id`, `slug`, `name`, `category`, `subcategory`, `brand`,
 `price`, `oldPrice`, `images`, `shortDescription`, `description`, `rating`,

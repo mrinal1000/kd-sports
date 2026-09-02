@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Eye, Heart, ShoppingBag } from "lucide-react";
-import { formatINR } from "@/config/site";
+import { Eye, Heart, MessageSquare, ShoppingBag } from "lucide-react";
+import { formatPrice } from "@/config/site";
 import type { Product } from "@/data/types";
 import { useStore } from "@/lib/store";
 import { Badge, Rating } from "./ui/primitives";
+import { ProductImage } from "./ProductImage";
 
-/** Discount percentage, rounded — only meaningful when oldPrice is set. */
+/** Discount percentage, rounded — only meaningful when both prices exist. */
 function discountPercent(product: Product): number | null {
-  if (!product.oldPrice || product.oldPrice <= product.price) return null;
+  if (product.price === null || !product.oldPrice || product.oldPrice <= product.price) return null;
   return Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
 }
 
@@ -64,25 +65,17 @@ export function ProductCard({
     <article className="group relative flex h-full flex-col border border-ink-800 bg-ink-900 transition-colors duration-300 hover:border-ink-600">
       <div className="relative aspect-[4/5] overflow-hidden bg-ink-850">
         <Link to={`/product/${product.slug}`} tabIndex={-1} aria-hidden="true">
-          <img
+          <ProductImage
             src={product.images[0]}
             alt=""
-            width={900}
-            height={1100}
-            loading="lazy"
-            decoding="async"
             className={`size-full object-cover transition-[transform,opacity] duration-500 ease-out group-hover:scale-105 ${
               hasSecondImage ? "group-hover:opacity-0" : ""
             }`}
           />
           {hasSecondImage && (
-            <img
+            <ProductImage
               src={product.images[1]}
               alt=""
-              width={900}
-              height={1100}
-              loading="lazy"
-              decoding="async"
               className="absolute inset-0 size-full scale-105 object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
             />
           )}
@@ -91,6 +84,7 @@ export function ProductCard({
         <div className="pointer-events-none absolute left-3 top-3 flex flex-col gap-1.5">
           {discount && <Badge tone="accent">−{discount}%</Badge>}
           {!product.inStock && <Badge tone="dark">Out of stock</Badge>}
+          {product.demo && <Badge tone="muted">Demo</Badge>}
         </div>
 
         <WishlistButton
@@ -100,15 +94,27 @@ export function ProductCard({
 
         {/* Actions slide up on hover; on touch they are simply always visible. */}
         <div className="absolute inset-x-3 bottom-3 flex gap-2 opacity-100 transition-[transform,opacity] duration-300 md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-          <button
-            type="button"
-            disabled={!product.inStock}
-            onClick={() => addToCart(product.id, product.sizes?.[0])}
-            className="flex h-11 flex-1 items-center justify-center gap-2 rounded-sm bg-white font-display text-[0.7rem] font-bold uppercase tracking-widest text-ink-950 transition-colors hover:bg-blaze-500 hover:text-white disabled:pointer-events-none disabled:opacity-50"
-          >
-            <ShoppingBag size={15} />
-            {product.inStock ? "Add to bag" : "Unavailable"}
-          </button>
+          {product.price === null ? (
+            // No confirmed price, so there is nothing honest to add to a bag.
+            // Send the customer to ask instead.
+            <Link
+              to="/contact"
+              className="flex h-11 flex-1 items-center justify-center gap-2 rounded-sm bg-white font-display text-[0.7rem] font-bold uppercase tracking-widest text-ink-950 transition-colors hover:bg-blaze-500 hover:text-white"
+            >
+              <MessageSquare size={15} />
+              Enquire
+            </Link>
+          ) : (
+            <button
+              type="button"
+              disabled={!product.inStock}
+              onClick={() => addToCart(product.id, product.sizes?.[0])}
+              className="flex h-11 flex-1 items-center justify-center gap-2 rounded-sm bg-white font-display text-[0.7rem] font-bold uppercase tracking-widest text-ink-950 transition-colors hover:bg-blaze-500 hover:text-white disabled:pointer-events-none disabled:opacity-50"
+            >
+              <ShoppingBag size={15} />
+              {product.inStock ? "Add to bag" : "Unavailable"}
+            </button>
+          )}
           {onQuickView && (
             <button
               type="button"
@@ -133,12 +139,18 @@ export function ProductCard({
           </Link>
         </h3>
 
-        <Rating value={product.rating} reviews={product.reviews} className="mb-3" />
+        {typeof product.rating === "number" && (
+          <Rating value={product.rating} reviews={product.reviews} className="mb-3" />
+        )}
 
         <div className="mt-auto flex items-baseline gap-2">
-          <span className="font-display text-xl font-bold text-white">{formatINR(product.price)}</span>
-          {product.oldPrice && (
-            <span className="text-sm text-ink-500 line-through">{formatINR(product.oldPrice)}</span>
+          <span
+            className={`font-display font-bold text-white ${product.price === null ? "text-base text-ink-300" : "text-xl"}`}
+          >
+            {formatPrice(product.price)}
+          </span>
+          {product.price !== null && product.oldPrice && (
+            <span className="text-sm text-ink-500 line-through">{formatPrice(product.oldPrice)}</span>
           )}
         </div>
       </div>
