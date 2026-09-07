@@ -21,10 +21,12 @@ export function Categories() {
 
       <div className="container-kd py-12 md:py-16">
         <p className="mb-10 max-w-3xl rounded-sm border border-dashed border-ink-600 bg-ink-900/60 px-5 py-4 text-sm leading-relaxed text-ink-300">
-          <strong className="text-white">Bats and Gloves are real stock.</strong> The other four
-          ranges are placeholders until real products arrive — Helmets in particular have been
-          mentioned but not yet supplied. Confirm what is genuinely carried and delete the rest in{" "}
-          <code className="text-ink-400">src/data/categories.ts</code>.
+          <strong className="text-white">
+            Bats, Batting Gloves, Protection and Cricket Shoes are listed with real stock and real
+            prices.
+          </strong>{" "}
+          Cricket Balls and Kit Bags &amp; Accessories are carried in the shop but are not itemised
+          online yet — ask us and we will tell you exactly what is in.
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">

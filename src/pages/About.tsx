@@ -223,7 +223,7 @@ export function About() {
             ))}
           </div>
           <p className="mt-5 text-xs text-ink-500">
-            Bats and gloves are real stock. The other ranges are placeholders until real products arrive — see the note on the Categories page.
+            Bats, gloves, protection and shoes are listed individually with real prices. Balls and kit bags are carried in the shop but not itemised online yet.
           </p>
         </section>
 

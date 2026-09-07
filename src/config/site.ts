@@ -163,7 +163,7 @@ export const IMAGES = {
     bats: "/images/cat-bats.jpg",          // SS Maximus
     gloves: "/images/cat-gloves.jpg",      // TON IPL Series, gold
     protection: "/images/cat-protection.jpg", // Forma Pro Axis helmet
-    balls: "/images/cat-balls.svg",        // no real photo yet
+    balls: "/images/cat-balls.jpg",        // KD Sports branded white ball, in the shop
     footwear: "/images/cat-footwear.jpg",  // New Balance CK 10 R5
     kit: "/images/cat-kit.jpg",            // the kit-bag shelf in the shop
   },
