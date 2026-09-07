@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { CheckCircle2, Instagram, Mail, MapPin, Package, Phone, RotateCcw, Truck } from "lucide-react";
+import {
+  CheckCircle2,
+  Instagram,
+  Mail,
+  MapPin,
+  Navigation,
+  Package,
+  Phone,
+  RotateCcw,
+  Truck,
+} from "lucide-react";
 import { BUSINESS, PAGE_META, SHORT_ADDRESS } from "@/config/site";
 import { Button, ButtonAnchor, Pending } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
@@ -162,17 +172,43 @@ export function Contact() {
               </li>
             </ul>
 
-            {/* Map placeholder — a precise pin is not invented. */}
-            <div className="mt-8 grid min-h-56 place-items-center border border-dashed border-ink-700 bg-ink-900 p-8 text-center">
-              <div>
-                <MapPin size={30} className="mx-auto mb-3 text-ink-600" aria-hidden="true" />
-                <p className="font-display text-sm font-bold uppercase tracking-wide text-white">
-                  Map to be added
-                </p>
-                <p className="mx-auto mt-2 max-w-xs text-xs leading-relaxed text-ink-400">
-                  A precise location has not been provided, and one has not been guessed. Send the
-                  Google Maps link for the shop and it drops in here.
-                </p>
+            {/* The shop on the map, at the coordinates the owner supplied.
+               *
+               * Keyless Google Maps embed, so there is no API key to leak or
+               * bill. It is lazy-loaded: it is well below the fold and pulls
+               * a few hundred KB from Google, which should not sit in the
+               * critical path of a page whose job is the contact form. */}
+            <div className="mt-8">
+              <div className="overflow-hidden rounded-sm border border-ink-800 bg-ink-900">
+                <iframe
+                  src={BUSINESS.map.embed}
+                  title={`Map showing ${BUSINESS.name} in ${BUSINESS.address.locality}`}
+                  width="100%"
+                  height="320"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="block w-full border-0"
+                />
+              </div>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <ButtonAnchor
+                  variant="outline"
+                  size="sm"
+                  href={BUSINESS.map.directions}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Navigation size={15} /> Get directions
+                </ButtonAnchor>
+                <ButtonAnchor
+                  variant="ghost"
+                  size="sm"
+                  href={BUSINESS.map.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin size={15} /> Open in Google Maps
+                </ButtonAnchor>
               </div>
             </div>
 

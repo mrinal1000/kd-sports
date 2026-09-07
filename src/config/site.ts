@@ -66,6 +66,30 @@ export const BUSINESS = {
     hours: todo("Opening hours"),
   },
 
+  /**
+   * Shop location, supplied by the owner 2026-09-07 as a Google Maps link.
+   *
+   * These are the coordinates the owner gave, not a geocode of the postal
+   * address — nothing here is inferred. `embed` is the keyless Google Maps
+   * embed form; `link` is what opens the full map or turn-by-turn directions
+   * in the visitor's own maps app.
+   */
+  map: {
+    lat: 30.7495417,
+    lng: 76.6123048,
+    zoom: 17,
+    link: "https://maps.google.com/maps?q=30.7495417%2C76.6123048&z=17&hl=en",
+    // Google's own embed endpoint, which is where `...&output=embed` 301s to.
+    // Pointed at directly on purpose: the 301 carries X-Frame-Options
+    // SAMEORIGIN (the 200 it lands on does not), so going straight there
+    // avoids relying on browsers ignoring XFO on a redirect hop, and saves a
+    // round trip. Keyless — there is no API key to leak or bill.
+    embed:
+      "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s30.7495417,76.6123048!6i17!3m1!1sen!5m1!1sen",
+    directions:
+      "https://www.google.com/maps/dir/?api=1&destination=30.7495417%2C76.6123048",
+  },
+
   social: {
     instagram: "https://www.instagram.com/kdsportsofficial05/",
     instagramHandle: "@kdsportsofficial05",
