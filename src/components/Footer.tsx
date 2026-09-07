@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail, MapPin } from "lucide-react";
 import { BUSINESS, FOOTER_NAV, IMAGES, SHORT_ADDRESS } from "@/config/site";
-import { Pending } from "./ui/primitives";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -88,8 +87,11 @@ export function Footer() {
               {BUSINESS.address.locality}, {BUSINESS.address.state} — {BUSINESS.address.pin}
             </p>
           </div>
-          <p className="mt-3 text-xs text-ink-600">
-            Phone: <Pending value={BUSINESS.contact.phone} />
+          <p className="mt-3 text-sm text-ink-300">
+            Phone:{" "}
+            <a href={BUSINESS.contact.phoneHref} className="hover:text-blaze-400">
+              {BUSINESS.contact.phone}
+            </a>
           </p>
         </div>
 

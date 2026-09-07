@@ -1,4 +1,4 @@
-import { ArrowRight, Handshake, Instagram, MapPin, ShieldCheck, Target, Users } from "lucide-react";
+import { ArrowRight, Handshake, Instagram, MapPin, Phone, ShieldCheck, Target, Users } from "lucide-react";
 import { BUSINESS, IMAGES, PAGE_META, SHORT_ADDRESS } from "@/config/site";
 import { ButtonAnchor, ButtonLink, Pending, Reveal } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
@@ -233,12 +233,18 @@ export function About() {
             <div>
               <h2 className="headline text-2xl text-white md:text-3xl">Talk to us directly</h2>
               <p className="mt-3 max-w-md text-ink-300">
-                Questions about fit, sizing or a team order are answered fastest by a person. Email
-                or Instagram both reach us.
+                Questions about fit, sizing or a team order are answered fastest by a person.
+                Call the shop, or reach us by email or Instagram.
               </p>
               <p className="mt-5 flex items-start gap-2.5 text-sm text-ink-300">
                 <MapPin size={17} className="mt-0.5 flex-none text-blaze-400" aria-hidden="true" />
                 {SHORT_ADDRESS}
+              </p>
+              <p className="mt-2 flex items-start gap-2.5 text-sm text-ink-300">
+                <Phone size={17} className="mt-0.5 flex-none text-blaze-400" aria-hidden="true" />
+                <a href={BUSINESS.contact.phoneHref} className="hover:text-blaze-400">
+                  {BUSINESS.contact.phone}
+                </a>
               </p>
               <p className="mt-2 text-sm text-ink-400">
                 Opening hours: <Pending value={BUSINESS.contact.hours} />

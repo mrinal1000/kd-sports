@@ -57,8 +57,12 @@ export const BUSINESS = {
 
   contact: {
     email: "nareshbashyal358@gmail.com",
-    phone: todo("Phone number", "Add a WhatsApp-capable number to enable ordering."),
-    whatsapp: todo("WhatsApp number", "Digits with country code, e.g. 919876543210."),
+    // Supplied by the owner, 2026-09-07. `phone` is what a reader sees,
+    // `phoneHref` is what tel: needs — never build one from the other by
+    // stripping characters at the call site.
+    phone: "+91 90567 89543",
+    phoneHref: "tel:+919056789543",
+    whatsapp: todo("WhatsApp number", "Confirm whether +91 90567 89543 is on WhatsApp."),
     hours: todo("Opening hours"),
   },
 
@@ -109,7 +113,7 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
   contact: {
     title: "Contact KD SPORTS | Cricket Store, Kharar",
     description:
-      "Get in touch with KD SPORTS, a cricket store in Kharar, SAS Nagar, Punjab. Email or reach us on Instagram.",
+      "Get in touch with KD SPORTS, a cricket store in Kharar, SAS Nagar, Punjab. Call +91 90567 89543, or reach us by email or Instagram.",
   },
   cart: { title: "Your Bag | KD SPORTS", description: "Review the gear in your bag." },
   wishlist: { title: "Wishlist | KD SPORTS", description: "Gear you have saved for later." },

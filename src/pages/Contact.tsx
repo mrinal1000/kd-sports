@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle2, Instagram, Mail, MapPin, Package, RotateCcw, Truck } from "lucide-react";
+import { CheckCircle2, Instagram, Mail, MapPin, Package, Phone, RotateCcw, Truck } from "lucide-react";
 import { BUSINESS, PAGE_META, SHORT_ADDRESS } from "@/config/site";
 import { Button, ButtonAnchor, Pending } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
@@ -114,6 +114,21 @@ export function Contact() {
 
               <li className="flex gap-4">
                 <span className="grid size-11 flex-none place-items-center rounded-sm bg-blaze-500/12 text-blaze-400">
+                  <Phone size={19} aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="font-display text-sm font-bold uppercase tracking-wide text-white">Phone</h3>
+                  <a
+                    href={BUSINESS.contact.phoneHref}
+                    className="mt-1 block text-sm text-ink-300 hover:text-blaze-400"
+                  >
+                    {BUSINESS.contact.phone}
+                  </a>
+                </div>
+              </li>
+
+              <li className="flex gap-4">
+                <span className="grid size-11 flex-none place-items-center rounded-sm bg-blaze-500/12 text-blaze-400">
                   <Mail size={19} aria-hidden="true" />
                 </span>
                 <div>
@@ -146,10 +161,6 @@ export function Contact() {
                 </div>
               </li>
             </ul>
-
-            <p className="mt-6 text-sm text-ink-400">
-              Phone: <Pending value={BUSINESS.contact.phone} />
-            </p>
 
             {/* Map placeholder — a precise pin is not invented. */}
             <div className="mt-8 grid min-h-56 place-items-center border border-dashed border-ink-700 bg-ink-900 p-8 text-center">
