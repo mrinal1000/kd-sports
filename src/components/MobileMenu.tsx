@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { ChevronRight, Heart, Instagram, Mail, Search, X } from "lucide-react";
 import { BUSINESS, IMAGES, NAV_LINKS } from "@/config/site";
 import { CATEGORIES } from "@/data/categories";
+import { countByCategory } from "@/lib/catalog";
 
 /**
  * Full-height mobile drawer.
@@ -108,7 +109,13 @@ export function MobileMenu({
               {CATEGORIES.map((category) => (
                 <li key={category.slug}>
                   <Link
-                    to={`/shop?category=${category.slug}`}
+                    // Ranges carried in the shop but not itemised online have
+                    // nothing to filter to; send those to Contact instead.
+                    to={
+                      countByCategory(category.slug) > 0
+                        ? `/shop?category=${category.slug}`
+                        : "/contact"
+                    }
                     onClick={onClose}
                     className="block rounded-sm border border-ink-800 bg-ink-900 px-3 py-3 font-display text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-blaze-500"
                   >

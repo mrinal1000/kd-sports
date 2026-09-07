@@ -8,10 +8,13 @@ import type { Category } from "./types";
  * fitness and apparel were removed on the owner's instruction (2026-09-02):
  * "this is cricket store only".
  *
- * Bats and Gloves hold the owner's real stock. The rest hold demo placeholders
- * until real products arrive — Helmets is listed because the owner has said
- * they are coming, and it renders as "coming soon" rather than pretending to
- * have stock.
+ * Bats, Gloves, Protection and Cricket Shoes hold the owner's real stock, all
+ * of it photographed and priced. Cricket Balls and Kit Bags are genuinely
+ * carried in the shop but have never been itemised by the supplier, so they
+ * have no products to list — their cards say "In store" and point at Contact
+ * rather than at a shop filter that would return an empty page.
+ *
+ * All demo placeholders were deleted on 2026-09-07.
  */
 export const CATEGORIES: Category[] = [
   {

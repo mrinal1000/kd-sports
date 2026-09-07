@@ -13,9 +13,16 @@ import { Badge } from "./ui/primitives";
 export function CategoryCard({ category, tall = false }: { category: Category; tall?: boolean }) {
   const count = countByCategory(category.slug);
 
+  // Balls and kit bags are carried in the shop but not itemised online, so
+  // there is nothing to filter to. Sending someone to an empty results page
+  // would read as "we don't stock these", which is the opposite of true —
+  // point them at the people who can tell them what is in.
+  const listed = count > 0;
+  const href = listed ? `/shop?category=${category.slug}` : "/contact";
+
   return (
     <Link
-      to={`/shop?category=${category.slug}`}
+      to={href}
       className={`group relative block overflow-hidden bg-ink-850 ${tall ? "aspect-[3/4] lg:aspect-auto lg:h-full" : "aspect-[4/5]"}`}
     >
       <img
@@ -31,13 +38,13 @@ export function CategoryCard({ category, tall = false }: { category: Category; t
 
       <div className="relative flex h-full flex-col justify-end p-6">
         <Badge tone="muted" className="mb-3 self-start">
-          {count} {count === 1 ? "item" : "items"}
+          {listed ? `${count} ${count === 1 ? "item" : "items"}` : "In store"}
         </Badge>
         <h3 className="headline text-2xl text-white md:text-3xl">{category.name}</h3>
         <p className="mt-1.5 text-sm font-medium text-blaze-400">{category.tagline}</p>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-300">{category.description}</p>
         <span className="mt-5 inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-widest text-white">
-          Explore
+          {listed ? "Explore" : "Ask us"}
           <ArrowRight
             size={15}
             className="transition-transform duration-300 group-hover:translate-x-1.5"

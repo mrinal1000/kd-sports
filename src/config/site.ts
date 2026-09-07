@@ -154,11 +154,7 @@ export const IMAGES = {
   /** The KD Sports sign on the shop wall. */
   brandStatement: "/images/brand-statement.jpg",
 
-  /**
-   * Category cards. Every one is a photograph of real stock except `balls` —
-   * no cricket ball has been supplied yet, so that card keeps its drawn
-   * stand-in rather than borrowing a picture of something else.
-   */
+  /** Category cards. Every one is a photograph of the owner's own stock. */
   categories: {
     bats: "/images/cat-bats.jpg",          // SS Maximus
     gloves: "/images/cat-gloves.jpg",      // TON IPL Series, gold
@@ -202,8 +198,10 @@ export const FOOTER_NAV = {
     { label: "Cricket Bats", to: "/shop?category=bats" },
     { label: "Batting Gloves", to: "/shop?category=gloves" },
     { label: "Protection", to: "/shop?category=protection" },
-    { label: "Cricket Balls", to: "/shop?category=balls" },
-    { label: "Shoes & Kit Bags", to: "/shop?category=footwear" },
+    // Balls and kit bags are carried in the shop but not itemised online, so
+    // there is no shop filter to send anyone to. Footwear is listed properly.
+    { label: "Cricket Shoes", to: "/shop?category=footwear" },
+    { label: "Balls & Kit Bags", to: "/contact" },
     { label: "Everything", to: "/shop" },
   ],
   company: [

@@ -22,17 +22,16 @@ import type { Product } from "./types";
  * COUNTS were never supplied. Nothing here invents them, which is why the
  * shoes carry no size selector. Chase the supplier for those fields.
  *
- * -- DEMO (demo: true) ----------------------------------------------------
- * Two left: a cricket ball and a kit bag, badged "Demo", kept only because no
- * real product covers those ranges yet. The demo pads, helmet and shoes were
- * deleted the moment real ones arrived.
+ * -- NO DEMO CONTENT -----------------------------------------------------
+ * Every product below is real stock with a real price and a real photograph.
+ * The last two demo placeholders (a leather match ball and a wheelie kit bag)
+ * were deleted on 2026-09-07 along with four real products whose photos were
+ * never supplied - all six rendered as an empty dark tile. The four real ones
+ * are documented at the bottom of this file and come straight back the moment
+ * photographs arrive.
+ *
+ * Owner confirmed 2026-09-07: everything listed is in stock and available.
  */
-
-export const DEMO_CATALOGUE_NOTICE =
-  "Bats, shoes, gloves, pads and helmets are real stock with real prices. The two items badged Demo are placeholders until real ones arrive.";
-
-/** Placeholder artwork path, used only by the two remaining demo entries. */
-const img = (n: string) => `/images/products/${n}.svg`;
 
 export const PRODUCTS: Product[] = [
   /* =========== LIVE STOCK =========== */
@@ -55,67 +54,6 @@ export const PRODUCTS: Product[] = [
       { label: "Series", value: "Player Edition" },
       { label: "Colour", value: "White / Navy" },
       { label: "SKU", value: "KD-GLV-PLR" },
-    ],
-  },
-  {
-    id: "gloves-test-series",
-    slug: "batting-gloves-test-series",
-    name: "Batting Gloves - Test Series",
-    category: "gloves",
-    subcategory: "batting",
-    brand: "KD Sports",
-    sku: "KD-GLV-TST",
-    price: 1600,
-    images: ["/images/products/batting-gloves-test-series-1.jpg", "/images/products/batting-gloves-test-series-2.jpg", "/images/products/batting-gloves-test-series-3.jpg"],
-    shortDescription: "Test Series batting gloves from KD Sports.",
-    description: "Batting gloves stocked at KD Sports. Fit matters more than anything on the label — try a pair on, or tell us your size and we will say what we have.",
-    demo: false,
-    inStock: true,
-    specifications: [
-      { label: "Brand", value: "KD Sports" },
-      { label: "Series", value: "Test Series" },
-      { label: "SKU", value: "KD-GLV-TST" },
-    ],
-  },
-  {
-    id: "gloves-prestige",
-    slug: "batting-gloves-prestige",
-    name: "Batting Gloves - Prestige",
-    category: "gloves",
-    subcategory: "batting",
-    brand: "KD Sports",
-    sku: "KD-GLV-PRS",
-    price: 1500,
-    images: ["/images/products/batting-gloves-prestige-1.jpg", "/images/products/batting-gloves-prestige-2.jpg", "/images/products/batting-gloves-prestige-3.jpg"],
-    shortDescription: "Prestige batting gloves from KD Sports. White / Navy.",
-    description: "Batting gloves stocked at KD Sports. Fit matters more than anything on the label — try a pair on, or tell us your size and we will say what we have.",
-    demo: false,
-    inStock: true,
-    specifications: [
-      { label: "Brand", value: "KD Sports" },
-      { label: "Series", value: "Prestige" },
-      { label: "Colour", value: "White / Navy" },
-      { label: "SKU", value: "KD-GLV-PRS" },
-    ],
-  },
-  {
-    id: "gloves-keeping-cream",
-    slug: "keeping-gloves-cream",
-    name: "Wicket-Keeping Gloves — Cream",
-    category: "gloves",
-    subcategory: "keeping",
-    brand: "KD Sports",
-    sku: "KD-GLV-004",
-    price: null,
-    images: ["/images/products/gloves-keeping-cream-1.jpg"],
-    shortDescription: "Wicket-keeping gloves stocked at KD Sports. Name and price still to be confirmed.",
-    description: "A pair of keeping gloves we have not listed properly yet — the name and price are still to be confirmed. Ask and we will tell you exactly what they are.",
-    demo: false,
-    inStock: true,
-    specifications: [
-      { label: "Brand", value: "KD Sports" },
-      { label: "Colour", value: "Cream / White" },
-      { label: "SKU", value: "KD-GLV-004" },
     ],
   },
   {
@@ -463,25 +401,6 @@ export const PRODUCTS: Product[] = [
     specifications: [
       { label: "Brand", value: "SS" },
       { label: "SKU", value: "KD-BAT-18" },
-    ],
-  },
-  {
-    id: "bat-19",
-    slug: "ss-custom",
-    name: "SS Custom",
-    category: "bats",
-    subcategory: "willow",
-    brand: "SS",
-    sku: "KD-BAT-19",
-    price: 16200,
-    images: ["/images/products/ss-custom-1.jpg"],
-    shortDescription: "SS cricket bat. In stock at KD Sports, Kharar.",
-    description: "SS Custom — in stock at KD Sports, Kharar. Willow grade, weight and pickup vary bat to bat and are not listed; ask and we will weigh the exact one you are looking at.",
-    demo: false,
-    inStock: true,
-    specifications: [
-      { label: "Brand", value: "SS" },
-      { label: "SKU", value: "KD-BAT-19" },
     ],
   },
   {
@@ -1002,51 +921,6 @@ export const PRODUCTS: Product[] = [
       { label: "SKU", value: "KD-HEL-001" },
     ],
   },
-
-  /* =========== DEMO - no real equivalent yet =========== */
-  {
-    id: "cr-003",
-    slug: "leather-match-cricket-ball",
-    name: "Leather Match Cricket Ball",
-    category: "balls",
-    subcategory: "leather",
-    price: 950,
-    images: [img("ball-1"), img("ball-2")],
-    shortDescription: "Four-piece alum-tanned leather, hand-stitched seam.",
-    description:
-      "A four-piece leather ball with a proud hand-stitched seam that holds its shape through a full innings. Sold singly or by the box for club sides.",
-    demo: true,
-    rating: 4.5,
-    reviews: 41,
-    inStock: true,
-    specifications: [
-      { label: "Construction", value: "Four-piece, hand stitched" },
-      { label: "Leather", value: "Alum tanned" },
-      { label: "Weight", value: "156 g (5.5 oz)" },
-      { label: "Colour", value: "Red" },
-    ],
-  },
-  {
-    id: "cr-008",
-    slug: "cricket-kit-bag-wheelie",
-    name: "Wheelie Cricket Kit Bag",
-    category: "kit",
-    subcategory: "bags",
-    price: 5200,
-    images: [img("bag-1")],
-    shortDescription: "Full-kit capacity, wheeled, separate boot compartment.",
-    description:
-      "Enough room for bat, pads, helmet and boots, on wheels, because a full cricket kit is heavier than it looks by the time you reach the ground.",
-    demo: true,
-    rating: 4.5,
-    reviews: 16,
-    inStock: false,
-    specifications: [
-      { label: "Capacity", value: "Full kit plus two bats" },
-      { label: "Wheels", value: "Two, moulded" },
-      { label: "Compartments", value: "Main, boot, side pocket" },
-    ],
-  },
 ];
 
 /**
@@ -1072,6 +946,33 @@ export const PRODUCTS: Product[] = [
   // Quantum Rebel 1000                 EM     3799
   // 360 Bull Ring                      360    5899
   // Quantum Rebel XP                   EM     2899
+ */
+
+/**
+ * WITHHELD - real stock, not published because no photograph exists.
+ *
+ * These are genuine products with confirmed names and prices, but the supplier
+ * never sent photos for them. Rather than publish a tile that renders as an
+ * empty dark placeholder, they are held here. Drop the photos into
+ * public/images/products/ under the filenames listed and move each block back
+ * into PRODUCTS above.
+ *
+ *   NAME                                       SKU          PRICE (INR)
+ *   Batting Gloves - Test Series               KD-GLV-TST   1600
+ *   Batting Gloves - Prestige                  KD-GLV-PRS   1500
+ *   Wicket-Keeping Gloves — Cream              KD-GLV-004   null
+ *   SS Custom                                  KD-BAT-19    16200
+ *
+ * Expected filenames:
+ *   batting-gloves-test-series-1..3.jpg
+ *   batting-gloves-prestige-1..3.jpg
+ *   gloves-keeping-cream-1.jpg
+ *   ss-custom-1.jpg
+ *
+ * Also removed at the same time: two demo placeholders (a leather match ball
+ * and a wheelie kit bag) that were never real stock and only ever rendered as
+ * drawn artwork. Cricket Balls and Kit Bags are carried in the shop but are
+ * not itemised online, which is what the category cards now say.
  */
 
 /** Only prices that actually exist, so the shop filter is not skewed by nulls. */

@@ -14,12 +14,10 @@ import {
   Truck,
 } from "lucide-react";
 import { BUSINESS, formatPrice } from "@/config/site";
-import { DEMO_CATALOGUE_NOTICE } from "@/data/products";
 import { getProductBySlug, getRelated } from "@/lib/catalog";
 import { useStore } from "@/lib/store";
 import { Badge, Button, ButtonAnchor, ButtonLink, Rating, Reveal } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
-import { DemoNotice } from "@/components/ui/DemoNotice";
 import { PageHeader } from "@/components/PageHeader";
 import { ProductCard, WishlistButton } from "@/components/ProductCard";
 import { ProductImage } from "@/components/ProductImage";
@@ -67,8 +65,6 @@ export function ProductDetail() {
       />
 
       <div className="container-kd py-12 md:py-16">
-        <DemoNotice message={DEMO_CATALOGUE_NOTICE} className="mb-10" />
-
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           {/* ── Gallery ─────────────────────────────────────────────── */}
           <div>

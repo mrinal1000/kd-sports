@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { PAGE_META } from "@/config/site";
 import { CATEGORIES } from "@/data/categories";
+import type { Category } from "@/data/types";
 import { countByCategory } from "@/lib/catalog";
 import { Reveal } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
@@ -39,24 +40,49 @@ export function Categories() {
 
         <div className="mt-16 space-y-12">
           {CATEGORIES.map((category) => (
-            <section key={category.slug} aria-labelledby={`cat-${category.slug}`}>
+            <CategorySection key={category.slug} category={category} />
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+/**
+ * One range, with its sub-range shortcuts.
+ *
+ * Balls and kit bags are carried in the shop but not itemised online, so every
+ * link in a section with nothing listed points at Contact instead of a shop
+ * filter that would return an empty page.
+ */
+function CategorySection({ category }: { category: Category }) {
+  const count = countByCategory(category.slug);
+  const listed = count > 0;
+
+  return (
+    <section aria-labelledby={`cat-${category.slug}`}>
               <div className="mb-5 flex flex-wrap items-end justify-between gap-3 border-b border-ink-800 pb-4">
                 <h2 id={`cat-${category.slug}`} className="headline text-2xl text-white md:text-3xl">
                   <span className="slash" aria-hidden="true" />
                   {category.name}
                 </h2>
                 <Link
-                  to={`/shop?category=${category.slug}`}
+                  to={listed ? `/shop?category=${category.slug}` : "/contact"}
                   className="inline-flex items-center gap-1.5 font-display text-xs font-bold uppercase tracking-widest text-ink-300 transition-colors hover:text-white"
                 >
-                  Shop {countByCategory(category.slug)} items <ArrowRight size={14} />
+                  {listed ? `Shop ${count} items` : "Ask what is in store"}{" "}
+                  <ArrowRight size={14} />
                 </Link>
               </div>
               <ul className="flex flex-wrap gap-2">
                 {category.subcategories.map((sub) => (
                   <li key={sub.slug}>
                     <Link
-                      to={`/shop?category=${category.slug}&search=${encodeURIComponent(sub.name)}`}
+                      to={
+                        listed
+                          ? `/shop?category=${category.slug}&search=${encodeURIComponent(sub.name)}`
+                          : "/contact"
+                      }
                       className="inline-block rounded-pill border border-ink-700 px-4 py-2 text-sm text-ink-200 transition-colors hover:border-blaze-500 hover:text-white"
                     >
                       {sub.name}
@@ -64,11 +90,7 @@ export function Categories() {
                   </li>
                 ))}
               </ul>
-            </section>
-          ))}
-        </div>
-      </div>
-    </>
+    </section>
   );
 }
 

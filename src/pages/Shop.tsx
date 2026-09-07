@@ -3,12 +3,11 @@ import { useSearchParams } from "react-router-dom";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { PAGE_META, formatPrice } from "@/config/site";
 import { CATEGORIES } from "@/data/categories";
-import { DEMO_CATALOGUE_NOTICE, PRICE_BOUNDS } from "@/data/products";
+import { PRICE_BOUNDS } from "@/data/products";
 import type { CategorySlug, Product, SortKey } from "@/data/types";
 import { queryProducts } from "@/lib/catalog";
 import { Button, Reveal } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
-import { DemoNotice } from "@/components/ui/DemoNotice";
 import { ProductCard } from "@/components/ProductCard";
 import { QuickView } from "@/components/QuickView";
 import { PageHeader } from "@/components/PageHeader";
@@ -168,8 +167,6 @@ export function Shop() {
       />
 
       <div className="container-kd py-12 md:py-16">
-        <DemoNotice message={DEMO_CATALOGUE_NOTICE} className="mb-8" />
-
         <div className="grid gap-10 lg:grid-cols-[248px_1fr]">
           {/* Desktop sidebar */}
           <aside className="hidden lg:block">

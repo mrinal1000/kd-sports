@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { BUSINESS, IMAGES, PAGE_META } from "@/config/site";
 import { CATEGORIES } from "@/data/categories";
-import { DEMO_CATALOGUE_NOTICE } from "@/data/products";
 import { TESTIMONIALS, TESTIMONIALS_ARE_DEMO } from "@/data/testimonials";
 import type { Product } from "@/data/types";
 import { countByCategory, getFeatured } from "@/lib/catalog";
@@ -308,8 +307,6 @@ export function Home() {
               </ButtonLink>
             }
           />
-
-          <DemoNotice message={DEMO_CATALOGUE_NOTICE} className="mb-8" />
 
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {featured.map((product, index) => (
