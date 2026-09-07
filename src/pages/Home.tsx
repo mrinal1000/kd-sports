@@ -74,7 +74,7 @@ export function Home() {
           className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ink-950 to-transparent"
         />
 
-        <div className="container-kd relative">
+        <div className="container-kd relative grid items-center gap-12 lg:grid-cols-[1.15fr_auto] lg:gap-16">
           <div className="hero-in max-w-2xl">
             <p className="eyebrow mb-5">
               <span className="slash" aria-hidden="true" />
@@ -116,7 +116,77 @@ export function Home() {
                 {BUSINESS.social.instagramHandle}
               </a>
             </div>
+
+            {/* Phone version of the owner card.
+               *
+               * The tall portrait would push the CTAs under the fold on a
+               * phone, so below lg he appears as a compact row instead —
+               * still on the opening screen, still the first face you see,
+               * but underneath the buttons rather than in front of them. */}
+            <div className="mt-8 flex items-center gap-4 border-t border-white/10 pt-6 lg:hidden">
+              <img
+                src={IMAGES.owner}
+                alt={`${BUSINESS.proprietor}, proprietor of KD Sports`}
+                width={900}
+                height={1125}
+                loading="eager"
+                decoding="async"
+                className="size-14 flex-none rounded-sm object-cover ring-1 ring-white/15"
+              />
+              <div className="min-w-0">
+                <p className="font-display text-sm font-bold uppercase tracking-wide text-white">
+                  {BUSINESS.proprietor}
+                </p>
+                <p className="font-display text-[0.62rem] font-bold uppercase tracking-[0.18em] text-blaze-400">
+                  Proprietor · KD Sports, Kharar
+                </p>
+              </div>
+            </div>
           </div>
+
+          {/* The owner, in his own shop.
+             *
+             * This is the strongest trust signal a small independent shop has:
+             * a real person behind the counter, photographed under his own
+             * sign. It sits in the hero rather than buried on an About page
+             * because "who am I buying from" is the first question a customer
+             * asks of a store they have never heard of.
+             *
+             * Hidden below lg — on a phone it would push the CTAs under the
+             * fold, and the buttons matter more there than the portrait. */}
+          <figure className="hero-in relative hidden w-[300px] shrink-0 lg:block xl:w-[340px]">
+            <div className="relative overflow-hidden rounded-sm ring-1 ring-white/12">
+              <img
+                src={IMAGES.owner}
+                alt={`${BUSINESS.proprietor}, proprietor of KD Sports, at the shop counter in Kharar`}
+                width={900}
+                height={1125}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[4/5] w-full object-cover"
+              />
+              {/* keeps the caption legible over the lighter part of the photo */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink-950 via-ink-950/70 to-transparent"
+              />
+              <figcaption className="absolute inset-x-0 bottom-0 p-4">
+                <span className="block font-display text-sm font-bold uppercase tracking-wide text-white">
+                  {BUSINESS.proprietor}
+                </span>
+                <span className="mt-0.5 block font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-blaze-400">
+                  Proprietor · KD Sports
+                </span>
+              </figcaption>
+            </div>
+
+            {/* the accent slash, tying the card back to the rest of the system */}
+            <span
+              aria-hidden="true"
+              className="absolute -left-2 top-6 h-16 w-1 skew-x-[-12deg] bg-blaze-500"
+            />
+          </figure>
         </div>
 
         <a

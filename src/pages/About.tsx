@@ -36,7 +36,7 @@ export function About() {
             <div className="aspect-[4/3] overflow-hidden bg-ink-850">
               <img
                 src={IMAGES.about}
-                alt="KD Sports"
+                alt="Inside KD Sports in Kharar — the counter, with batting gloves and kit on the shelves behind"
                 width={1200}
                 height={900}
                 loading="lazy"

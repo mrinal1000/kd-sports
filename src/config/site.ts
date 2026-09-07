@@ -141,7 +141,9 @@ export const IMAGES = {
   },
 
   promo: "/images/promo-banner.svg",
-  about: "/images/about-store.svg",
+  /** The owner in his own shop — real photograph, EXIF stripped. */
+  owner: "/images/owner-naresh.jpg",
+  about: "/images/about-store.jpg",
   brandStatement: "/images/brand-statement.svg",
 
   categories: {
