@@ -173,11 +173,17 @@ export const IMAGES = {
   owner: "/images/owner-naresh.jpg",
   about: "/images/about-store.jpg",
 
-  /** Shop and staff photographs supplied by the owner, for the About page. */
+  /**
+   * Shop photograph for the About page.
+   *
+   * Only the proprietor appears anywhere on this site. Two photographs of him
+   * with another person were removed on his instruction (2026-09-07) and the
+   * files deleted, not just unreferenced — a person who has not agreed to be
+   * on a public website should not be sitting in the repo waiting to be
+   * re-linked by accident.
+   */
   store: {
     counter: "/images/kd-sports-naresh-1.jpg",
-    team: "/images/kd-sports-team-1.jpg",
-    teamAlt: "/images/kd-sports-team-2.jpg",
   },
   /** The KD Sports sign on the shop wall. */
   brandStatement: "/images/brand-statement.jpg",

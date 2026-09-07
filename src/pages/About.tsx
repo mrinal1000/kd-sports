@@ -144,44 +144,23 @@ export function About() {
 
         {/* Behind the counter
            *
-           * Real photographs of the shop and the people in it, supplied by the
-           * owner. For an independent retailer this does more work than any
-           * amount of copy: it answers "is this a real shop with real stock"
-           * in one glance. The gear on the shelves behind them is the same
-           * gear listed in the catalogue. */}
+           * One photograph of the owner in his own shop, supplied by him. For
+           * an independent retailer this does more work than any amount of
+           * copy: it answers "is this a real shop, run by a real person" in
+           * one glance, and the gear on the shelves behind him is the same
+           * gear listed in the catalogue.
+           *
+           * A second photo here showed the owner with another person. Removed
+           * on his instruction (2026-09-07) — only he appears on the site. */}
         <section className="mt-20 md:mt-28" aria-labelledby="counter">
           <h2 id="counter" className="headline mb-6 text-3xl text-white md:text-4xl">
             <span className="slash" aria-hidden="true" />
             Behind the counter
           </h2>
-          <p className="mb-8 max-w-2xl text-ink-300">
-            The shop in Kharar, and the people you will actually deal with when you walk in or
-            send a message.
-          </p>
 
-          <div className="grid gap-4 md:grid-cols-3">
-            <Reveal className="md:col-span-2">
-              <figure className="h-full">
-                <div className="overflow-hidden rounded-sm ring-1 ring-ink-800">
-                  <img
-                    src={IMAGES.store.team}
-                    alt="Two KD Sports staff inside the shop, holding a KD Sports bat and batting gloves, with kit bags and gloves on the shelves behind"
-                    width={1400}
-                    height={1050}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[4/3] w-full object-cover"
-                  />
-                </div>
-                <figcaption className="mt-3 text-sm text-ink-400">
-                  Inside the shop &mdash; a KD Sports bat and batting gloves, with the kit bag and
-                  glove range on the wall behind.
-                </figcaption>
-              </figure>
-            </Reveal>
-
-            <Reveal delay={90}>
-              <figure className="h-full">
+          <div className="grid gap-8 md:grid-cols-[minmax(0,22rem)_1fr] md:items-center md:gap-12">
+            <Reveal>
+              <figure>
                 <div className="overflow-hidden rounded-sm ring-1 ring-ink-800">
                   <img
                     src={IMAGES.store.counter}
@@ -190,13 +169,31 @@ export function About() {
                     height={1600}
                     loading="lazy"
                     decoding="async"
-                    className="aspect-[3/4] w-full object-cover md:aspect-auto md:h-full"
+                    className="aspect-[3/4] w-full object-cover"
                   />
                 </div>
                 <figcaption className="mt-3 text-sm text-ink-400">
                   {BUSINESS.proprietor} at the counter, under the KD Sports sign.
                 </figcaption>
               </figure>
+            </Reveal>
+
+            <Reveal delay={90}>
+              <p className="text-lg leading-relaxed text-ink-200 md:text-xl">
+                This is the shop in Kharar, and the person you will actually deal with when you
+                walk in or send a message.
+              </p>
+              <p className="mt-5 leading-relaxed text-ink-300">
+                {BUSINESS.proprietor} selects every bat, glove and pair of shoes in the catalogue
+                himself. If you ask what a bat weighs, he can pick it up and tell you &mdash;
+                which is the whole reason to buy from a shop rather than a listing.
+              </p>
+              <p className="mt-6 flex items-start gap-2.5 text-sm text-ink-300">
+                <Phone size={17} className="mt-0.5 flex-none text-blaze-400" aria-hidden="true" />
+                <a href={BUSINESS.contact.phoneHref} className="hover:text-blaze-400">
+                  {BUSINESS.contact.phone}
+                </a>
+              </p>
             </Reveal>
           </div>
         </section>
