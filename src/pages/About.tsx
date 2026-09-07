@@ -1,4 +1,14 @@
-import { ArrowRight, Handshake, Instagram, MapPin, Phone, ShieldCheck, Target, Users } from "lucide-react";
+import {
+  ArrowRight,
+  Clock,
+  Handshake,
+  Instagram,
+  MapPin,
+  Phone,
+  ShieldCheck,
+  Target,
+  Users,
+} from "lucide-react";
 import { BUSINESS, IMAGES, PAGE_META, SHORT_ADDRESS } from "@/config/site";
 import { ButtonAnchor, ButtonLink, Pending, Reveal } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
@@ -243,8 +253,14 @@ export function About() {
                   {BUSINESS.contact.phone}
                 </a>
               </p>
-              <p className="mt-2 text-sm text-ink-400">
-                Opening hours: <Pending value={BUSINESS.contact.hours} />
+              <p className="mt-2 flex items-start gap-2.5 text-sm text-ink-300">
+                <Clock size={17} className="mt-0.5 flex-none text-blaze-400" aria-hidden="true" />
+                <span>
+                  {BUSINESS.contact.hours}
+                  <span className="ml-2 text-ink-500">
+                    <Pending value={BUSINESS.contact.hoursDays} />
+                  </span>
+                </span>
               </p>
             </div>
             <div className="flex flex-col gap-3 md:items-end">

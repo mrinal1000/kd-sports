@@ -63,7 +63,11 @@ export const BUSINESS = {
     phone: "+91 90567 89543",
     phoneHref: "tel:+919056789543",
     whatsapp: todo("WhatsApp number", "Confirm whether +91 90567 89543 is on WhatsApp."),
-    hours: todo("Opening hours"),
+    // Supplied by the owner, 2026-09-07. He gave the times but not the days,
+    // so no week pattern is claimed here — "Mon-Sat" or "open daily" would be
+    // a guess, and the one thing worse than missing hours is wrong ones.
+    hours: "10:00 am – 8:00 pm",
+    hoursDays: todo("Days open", "Which days? e.g. every day, or Mon–Sat."),
   },
 
   /**

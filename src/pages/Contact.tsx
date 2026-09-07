@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   CheckCircle2,
+  Clock,
   Instagram,
   Mail,
   MapPin,
@@ -134,6 +135,19 @@ export function Contact() {
                   >
                     {BUSINESS.contact.phone}
                   </a>
+                </div>
+              </li>
+
+              <li className="flex gap-4">
+                <span className="grid size-11 flex-none place-items-center rounded-sm bg-blaze-500/12 text-blaze-400">
+                  <Clock size={19} aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="font-display text-sm font-bold uppercase tracking-wide text-white">Hours</h3>
+                  <p className="mt-1 text-sm text-ink-300">{BUSINESS.contact.hours}</p>
+                  <p className="mt-1 text-xs text-ink-500">
+                    Days open: <Pending value={BUSINESS.contact.hoursDays} />
+                  </p>
                 </div>
               </li>
 
