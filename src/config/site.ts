@@ -135,12 +135,12 @@ export const IMAGES = {
   ogCover: "/images/og-cover.svg",
 
   hero: {
-    /** Replace with e.g. /images/hero-cricket.jpg */
-    primary: "/images/hero-cricket.svg",
-    mobile: "/images/hero-cricket-mobile.svg",
+    /** The shop wall — sign, pads and kit bags. Sits under a heavy scrim. */
+    primary: "/images/hero-cricket.jpg",
+    mobile: "/images/hero-cricket-mobile.jpg",
   },
 
-  promo: "/images/promo-banner.svg",
+  promo: "/images/promo-banner.jpg",
   /** The owner in his own shop — real photograph, EXIF stripped. */
   owner: "/images/owner-naresh.jpg",
   about: "/images/about-store.jpg",
@@ -151,27 +151,37 @@ export const IMAGES = {
     team: "/images/kd-sports-team-1.jpg",
     teamAlt: "/images/kd-sports-team-2.jpg",
   },
-  brandStatement: "/images/brand-statement.svg",
+  /** The KD Sports sign on the shop wall. */
+  brandStatement: "/images/brand-statement.jpg",
 
+  /**
+   * Category cards. Every one is a photograph of real stock except `balls` —
+   * no cricket ball has been supplied yet, so that card keeps its drawn
+   * stand-in rather than borrowing a picture of something else.
+   */
   categories: {
-    bats: "/images/cat-bats.svg",
-    gloves: "/images/cat-gloves.svg",
-    protection: "/images/cat-protection.svg",
-    balls: "/images/cat-balls.svg",
-    footwear: "/images/cat-footwear.svg",
-    kit: "/images/cat-kit.svg",
+    bats: "/images/cat-bats.jpg",          // SS Maximus
+    gloves: "/images/cat-gloves.jpg",      // TON IPL Series, gold
+    protection: "/images/cat-protection.jpg", // Forma Pro Axis helmet
+    balls: "/images/cat-balls.svg",        // no real photo yet
+    footwear: "/images/cat-footwear.jpg",  // New Balance CK 10 R5
+    kit: "/images/cat-kit.jpg",            // the kit-bag shelf in the shop
   },
 
-  /** Instagram grid stand-ins — see the note in InstagramGrid.tsx. */
+  /**
+   * The social grid. These are KD Sports' OWN product photographs, not posts
+   * scraped from Instagram — the tiles link out to the profile rather than
+   * reproducing what is on it. Swap in chosen shots any time.
+   */
   instagram: [
-    "/images/social/ig-1.svg",
-    "/images/social/ig-2.svg",
-    "/images/social/ig-3.svg",
-    "/images/social/ig-4.svg",
-    "/images/social/ig-5.svg",
-    "/images/social/ig-6.svg",
-    "/images/social/ig-7.svg",
-    "/images/social/ig-8.svg",
+    "/images/social/ig-1.jpg",
+    "/images/social/ig-2.jpg",
+    "/images/social/ig-3.jpg",
+    "/images/social/ig-4.jpg",
+    "/images/social/ig-5.jpg",
+    "/images/social/ig-6.jpg",
+    "/images/social/ig-7.jpg",
+    "/images/social/ig-8.jpg",
   ],
 } as const;
 

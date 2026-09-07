@@ -13,7 +13,7 @@ import { CATEGORIES } from "@/data/categories";
 import { DEMO_CATALOGUE_NOTICE } from "@/data/products";
 import { TESTIMONIALS, TESTIMONIALS_ARE_DEMO } from "@/data/testimonials";
 import type { Product } from "@/data/types";
-import { getFeatured } from "@/lib/catalog";
+import { countByCategory, getFeatured } from "@/lib/catalog";
 import { ButtonLink, Reveal, SectionHeading } from "@/components/ui/primitives";
 import { Seo } from "@/components/ui/Seo";
 import { DemoNotice } from "@/components/ui/DemoNotice";
@@ -42,6 +42,8 @@ const DISCIPLINES = [
 export function Home() {
   const [quickView, setQuickView] = useState<Product | null>(null);
   const featured = getFeatured(8);
+  // read from the catalogue so the number cannot go stale as stock arrives
+  const batCount = countByCategory("bats");
 
   return (
     <>
@@ -102,7 +104,7 @@ export function Home() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <Stat value="19" label="Bats in stock" />
+              <Stat value={String(batCount)} label="Bats in stock" />
               <Divider />
               <Stat value="GST" label="Registered business" />
               <Divider />
@@ -250,7 +252,7 @@ export function Home() {
                 <div className="aspect-[4/3] overflow-hidden bg-ink-850">
                   <img
                     src={IMAGES.brandStatement}
-                    alt="Sports equipment at KD Sports"
+                    alt="The KD Sports sign on the shop wall in Kharar, with batting pads and kit bags on the shelf beside it"
                     width={1400}
                     height={900}
                     loading="lazy"
@@ -437,9 +439,10 @@ export function Home() {
           <InstagramGrid />
 
           <p className="mt-4 text-xs text-ink-500">
-            Grid shows placeholder tiles linking to {BUSINESS.social.instagramHandle}. Instagram
-            posts are not copied here — drop chosen images into{" "}
-            <code className="text-ink-400">public/images/social/</code> instead.
+            These are KD Sports&rsquo; own product photographs, linking through to{" "}
+            {BUSINESS.social.instagramHandle}. Posts are not copied from Instagram — swap in
+            different shots any time from{" "}
+            <code className="text-ink-400">public/images/social/</code>.
           </p>
         </div>
       </section>
