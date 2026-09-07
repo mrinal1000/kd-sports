@@ -1,41 +1,41 @@
 import type { Product } from "./types";
 
 /**
- * KD SPORTS catalogue — a cricket store.
+ * KD SPORTS catalogue - a cricket store in Kharar, Punjab.
  *
- * ── LIVE (demo: false) ────────────────────────────────────────────────────
- * From the owner's product data sheet (products_3, 2026-09-02). Names, brands,
- * prices, sizes and SKUs are AS SUPPLIED; this file is generated from that
- * JSON rather than retyped.
+ * -- LIVE STOCK (demo: false) ---------------------------------------------
+ * Two supplier drops, both from the owner's own data sheets:
+ *   - 2026-09-02: 19 bats + 4 batting gloves
+ *   - 2026-09-07: 7 bats, 10 pairs of shoes, 2 gloves, 3 pads, 1 helmet
+ * Names, brands, prices and SKUs are AS SUPPLIED. This file is GENERATED from
+ * those sheets rather than retyped, so no price is transcribed by hand.
  *
- * Rules from the sheet, enforced here:
- *   • Only status "ready" and "needs_data" are published. The 15 bats the
- *     owner has not yet confirmed are in DRAFT_PRODUCTS at the bottom and are
- *     NOT rendered — the sheet says to stage them until confirmed.
- *   • `price: null` renders "Price on request" and never as 0.
- *   • Null specs are omitted. No willow, grade, weight or grains is invented.
- *   • `brand` is absent where the caption did not state one.
- *   • Real products carry NO star rating — there is no review data, and an
- *     invented rating beside a real price would be a fabrication.
+ * Rules carried from both sheets:
+ *   - `price: null` renders "Price on request" and never as 0.
+ *   - Null specs are omitted entirely. No willow, grade, weight, size or
+ *     colourway is invented to fill a gap.
+ *   - `brand` is absent where the supplier did not state one.
+ *   - Real products carry NO star rating; there is no review data.
  *
- * ── PHOTOS ────────────────────────────────────────────────────────────────
- * 18 bats now have real photographs, cropped from the owner's own WhatsApp
- * screenshots (the bat tile only — no phone UI, no sender name, no MRP label).
- * Everything else falls back to a placeholder via ProductImage until real
- * photography arrives.
+ * WARNING - the 2026-09-07 drop is flagged `needs_data` at source: names,
+ * prices and photos are confirmed, but SIZES, WEIGHTS, COLOURWAYS AND STOCK
+ * COUNTS were never supplied. Nothing here invents them, which is why the
+ * shoes carry no size selector. Chase the supplier for those fields.
  *
- * ── DEMO (demo: true) ─────────────────────────────────────────────────────
- * The remaining few are layout placeholders, badged "Demo" in the UI.
+ * -- DEMO (demo: true) ----------------------------------------------------
+ * Two left: a cricket ball and a kit bag, badged "Demo", kept only because no
+ * real product covers those ranges yet. The demo pads, helmet and shoes were
+ * deleted the moment real ones arrived.
  */
 
 export const DEMO_CATALOGUE_NOTICE =
-  "Cricket bats and batting gloves are real stock with real prices. Items badged Demo are placeholders for layout only.";
+  "Bats, shoes, gloves, pads and helmets are real stock with real prices. The two items badged Demo are placeholders until real ones arrive.";
 
-/** Placeholder artwork path, used only by the demo entries. */
+/** Placeholder artwork path, used only by the two remaining demo entries. */
 const img = (n: string) => `/images/products/${n}.svg`;
 
 export const PRODUCTS: Product[] = [
-  /* ═══════════ LIVE STOCK — confirmed by the owner ═══════════ */
+  /* =========== LIVE STOCK =========== */
   {
     id: "gloves-player-edition",
     slug: "batting-gloves-player-edition",
@@ -108,8 +108,8 @@ export const PRODUCTS: Product[] = [
     sku: "KD-GLV-004",
     price: null,
     images: ["/images/products/gloves-keeping-cream-1.jpg"],
-    shortDescription: "Wicket-keeping gloves stocked at KD Sports. Name and price to be confirmed.",
-    description: "A pair of keeping gloves in the shop that we have not listed properly yet. The name and price are still to be confirmed — ask and we will tell you exactly what they are.",
+    shortDescription: "Wicket-keeping gloves stocked at KD Sports. Name and price still to be confirmed.",
+    description: "A pair of keeping gloves we have not listed properly yet — the name and price are still to be confirmed. Ask and we will tell you exactly what they are.",
     demo: false,
     inStock: true,
     specifications: [
@@ -184,7 +184,7 @@ export const PRODUCTS: Product[] = [
     name: "Tilak Varma Trigger Edition",
     category: "bats",
     subcategory: "willow",
-    // brand not stated on the caption — deliberately not guessed
+    // brand not stated by the supplier — not guessed
     sku: "KD-BAT-04",
     price: 36000,
     images: ["/images/products/tilak-varma-trigger-edition-1.jpg"],
@@ -223,7 +223,7 @@ export const PRODUCTS: Product[] = [
     name: "Master 1500",
     category: "bats",
     subcategory: "willow",
-    // brand not stated on the caption — deliberately not guessed
+    // brand not stated by the supplier — not guessed
     sku: "KD-BAT-06",
     price: 21000,
     images: ["/images/products/master-1500-1.jpg"],
@@ -262,7 +262,7 @@ export const PRODUCTS: Product[] = [
     name: "Master 5000",
     category: "bats",
     subcategory: "willow",
-    // brand not stated on the caption — deliberately not guessed
+    // brand not stated by the supplier — not guessed
     sku: "KD-BAT-08",
     price: 26000,
     images: ["/images/products/master-5000-1.jpg"],
@@ -484,8 +484,526 @@ export const PRODUCTS: Product[] = [
       { label: "SKU", value: "KD-BAT-19" },
     ],
   },
+  {
+    id: "bat-ss-ton-special-edition",
+    slug: "ss-ton-special-edition",
+    name: "SS TON Special Edition English Willow Bat",
+    category: "bats",
+    subcategory: "willow",
+    brand: "SS / TON (Sareen Sports Industries)",
+    sku: "KD-BAT-001",
+    price: 58000,
+    images: ["/images/products/ss-ton-special-edition-1.jpg", "/images/products/ss-ton-special-edition-2.jpg", "/images/products/ss-ton-special-edition-3.jpg"],
+    shortDescription: "SS cricket bat. In stock at KD Sports, Kharar.",
+    description: "SS TON Special Edition English Willow Bat — in stock at KD Sports, Kharar, Punjab. Come in and we will weigh the exact one you are looking at.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "SS / TON (Sareen Sports Industries)" },
+      { label: "Series", value: "TON Special Edition" },
+      { label: "Willow", value: "English Willow" },
+      { label: "Size", value: "SH (Short Handle)" },
+      { label: "Length", value: "85 cm" },
+      { label: "Manufactured", value: "Sep 2026" },
+      { label: "Made by", value: "Sareen Sports Industries, Meerut, Uttar Pradesh, India" },
+      { label: "Printed MRP", value: "Rs 58000" },
+      { label: "SKU", value: "KD-BAT-001" },
+    ],
+  },
+  {
+    id: "bat-ss-maximus",
+    slug: "ss-maximus",
+    name: "SS Maximus English Willow Bat",
+    category: "bats",
+    subcategory: "willow",
+    brand: "SS / TON (Sareen Sports Industries)",
+    sku: "KD-BAT-002",
+    price: 85000,
+    images: ["/images/products/ss-maximus-1.jpg", "/images/products/ss-maximus-2.jpg", "/images/products/ss-maximus-3.jpg"],
+    shortDescription: "SS cricket bat. In stock at KD Sports, Kharar.",
+    description: "SS Maximus English Willow Bat — in stock at KD Sports, Kharar, Punjab. Come in and we will weigh the exact one you are looking at.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "SS / TON (Sareen Sports Industries)" },
+      { label: "Series", value: "Maximus" },
+      { label: "Willow", value: "English Willow" },
+      { label: "Size", value: "SH (Short Handle)" },
+      { label: "Length", value: "85 cm" },
+      { label: "Manufactured", value: "Sep 2026" },
+      { label: "Made by", value: "Sareen Sports Industries, Meerut, Uttar Pradesh, India" },
+      { label: "Printed MRP", value: "Rs 85000" },
+      { label: "SKU", value: "KD-BAT-002" },
+    ],
+  },
+  {
+    id: "bat-ss-legend-sourav-ganguly",
+    slug: "ss-legend-sourav-ganguly",
+    name: "SS Legend Sourav Ganguly English Willow Bat",
+    category: "bats",
+    subcategory: "willow",
+    brand: "SS / TON (Sareen Sports Industries)",
+    sku: "KD-BAT-003",
+    price: 60000,
+    images: ["/images/products/ss-legend-sourav-ganguly-1.jpg", "/images/products/ss-legend-sourav-ganguly-2.jpg", "/images/products/ss-legend-sourav-ganguly-3.jpg"],
+    shortDescription: "SS cricket bat. In stock at KD Sports, Kharar.",
+    description: "SS Legend Sourav Ganguly English Willow Bat — in stock at KD Sports, Kharar, Punjab. Come in and we will weigh the exact one you are looking at.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "SS / TON (Sareen Sports Industries)" },
+      { label: "Series", value: "Legend" },
+      { label: "Willow", value: "English Willow" },
+      { label: "Size", value: "SH (Short Handle)" },
+      { label: "Length", value: "85 cm" },
+      { label: "Manufactured", value: "Sep 2026" },
+      { label: "Made by", value: "Sareen Sports Industries, Meerut, Uttar Pradesh, India" },
+      { label: "Printed MRP", value: "Rs 60000" },
+      { label: "SKU", value: "KD-BAT-003" },
+    ],
+  },
+  {
+    id: "bat-ss-gg-smacker-extreme",
+    slug: "ss-gg-smacker-extreme",
+    name: "SS GG Smacker Extreme English Willow Bat",
+    category: "bats",
+    subcategory: "willow",
+    brand: "SS / TON (Sareen Sports Industries)",
+    sku: "KD-BAT-004",
+    price: 58000,
+    images: ["/images/products/ss-gg-smacker-extreme-1.jpg", "/images/products/ss-gg-smacker-extreme-2.jpg", "/images/products/ss-gg-smacker-extreme-3.jpg"],
+    shortDescription: "SS cricket bat. In stock at KD Sports, Kharar.",
+    description: "SS GG Smacker Extreme English Willow Bat — in stock at KD Sports, Kharar, Punjab. Come in and we will weigh the exact one you are looking at.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "SS / TON (Sareen Sports Industries)" },
+      { label: "Series", value: "GG Smacker" },
+      { label: "Willow", value: "English Willow" },
+      { label: "Size", value: "SH (Short Handle)" },
+      { label: "Length", value: "85 cm" },
+      { label: "Manufactured", value: "Aug 2026" },
+      { label: "Made by", value: "Sareen Sports Industries, Meerut, Uttar Pradesh, India" },
+      { label: "Printed MRP", value: "Rs 58000" },
+      { label: "SKU", value: "KD-BAT-004" },
+    ],
+  },
+  {
+    id: "bat-ss-vintage-7-finisher",
+    slug: "ss-vintage-7-finisher",
+    name: "SS Vintage 7 Finisher English Willow Bat",
+    category: "bats",
+    subcategory: "willow",
+    brand: "SS / TON (Sareen Sports Industries)",
+    sku: "KD-BAT-005",
+    price: 57000,
+    images: ["/images/products/ss-vintage-7-finisher-1.jpg", "/images/products/ss-vintage-7-finisher-2.jpg", "/images/products/ss-vintage-7-finisher-3.jpg"],
+    shortDescription: "SS cricket bat. In stock at KD Sports, Kharar.",
+    description: "SS Vintage 7 Finisher English Willow Bat — in stock at KD Sports, Kharar, Punjab. Come in and we will weigh the exact one you are looking at.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "SS / TON (Sareen Sports Industries)" },
+      { label: "Series", value: "Vintage" },
+      { label: "Willow", value: "English Willow" },
+      { label: "Size", value: "SH (Short Handle)" },
+      { label: "Length", value: "85 cm" },
+      { label: "Manufactured", value: "Sep 2026" },
+      { label: "Made by", value: "Sareen Sports Industries, Meerut, Uttar Pradesh, India" },
+      { label: "Printed MRP", value: "Rs 57000" },
+      { label: "SKU", value: "KD-BAT-005" },
+    ],
+  },
+  {
+    id: "bat-ss-v-suryavanshi",
+    slug: "ss-v-suryavanshi",
+    name: "SS V. Suryavanshi English Willow Bat",
+    category: "bats",
+    subcategory: "willow",
+    brand: "SS / TON (Sareen Sports Industries)",
+    sku: "KD-BAT-006",
+    price: 108000,
+    images: ["/images/products/ss-v-suryavanshi-1.jpg", "/images/products/ss-v-suryavanshi-2.jpg", "/images/products/ss-v-suryavanshi-3.jpg"],
+    shortDescription: "SS cricket bat. In stock at KD Sports, Kharar.",
+    description: "SS V. Suryavanshi English Willow Bat — in stock at KD Sports, Kharar, Punjab. Come in and we will weigh the exact one you are looking at.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "SS / TON (Sareen Sports Industries)" },
+      { label: "Series", value: "Player Edition" },
+      { label: "Willow", value: "English Willow" },
+      { label: "Size", value: "SH (Short Handle)" },
+      { label: "Length", value: "85 cm" },
+      { label: "Manufactured", value: "Sep 2026" },
+      { label: "Made by", value: "Sareen Sports Industries, Meerut, Uttar Pradesh, India" },
+      { label: "Printed MRP", value: "Rs 108000" },
+      { label: "SKU", value: "KD-BAT-006" },
+    ],
+  },
+  {
+    id: "bat-ss-ton-gold-edition",
+    slug: "ss-ton-gold-edition",
+    name: "SS TON Gold Edition English Willow Bat",
+    category: "bats",
+    subcategory: "willow",
+    brand: "SS / TON (Sareen Sports Industries)",
+    sku: "KD-BAT-007",
+    price: 59000,
+    images: ["/images/products/ss-ton-gold-edition-1.jpg", "/images/products/ss-ton-gold-edition-2.jpg", "/images/products/ss-ton-gold-edition-3.jpg"],
+    shortDescription: "SS cricket bat. In stock at KD Sports, Kharar.",
+    description: "SS TON Gold Edition English Willow Bat — in stock at KD Sports, Kharar, Punjab. Come in and we will weigh the exact one you are looking at.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "SS / TON (Sareen Sports Industries)" },
+      { label: "Series", value: "TON Gold Edition" },
+      { label: "Willow", value: "English Willow" },
+      { label: "Size", value: "SH (Short Handle)" },
+      { label: "Length", value: "85 cm" },
+      { label: "Manufactured", value: "Sep 2026" },
+      { label: "Made by", value: "Sareen Sports Industries, Meerut, Uttar Pradesh, India" },
+      { label: "Printed MRP", value: "Rs 59000" },
+      { label: "SKU", value: "KD-BAT-007" },
+    ],
+  },
+  {
+    id: "shoes-asics-gel-lethal-field-2",
+    slug: "asics-gel-lethal-field-2",
+    name: "Asics Gel Lethal Field 2 Cricket Shoes",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "Asics",
+    sku: "KD-SHO-001",
+    price: 6999,
+    images: ["/images/products/asics-gel-lethal-field-2-1.jpg", "/images/products/asics-gel-lethal-field-2-2.jpg", "/images/products/asics-gel-lethal-field-2-3.jpg"],
+    shortDescription: "Asics cricket shoes. In stock at KD Sports, Kharar.",
+    description: "Asics Gel Lethal Field 2 Cricket Shoes — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "Asics" },
+      { label: "Series", value: "Gel Lethal" },
+      { label: "Colourway", value: "White / navy" },
+      { label: "SKU", value: "KD-SHO-001" },
+    ],
+  },
+  {
+    id: "shoes-asics-gel-peake-2",
+    slug: "asics-gel-peake-2",
+    name: "Asics Gel Peake 2 Cricket Shoes",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "Asics",
+    sku: "KD-SHO-002",
+    price: 6999,
+    images: ["/images/products/asics-gel-peake-2-1.jpg", "/images/products/asics-gel-peake-2-2.jpg", "/images/products/asics-gel-peake-2-3.jpg"],
+    shortDescription: "Asics cricket shoes. In stock at KD Sports, Kharar.",
+    description: "Asics Gel Peake 2 Cricket Shoes — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "Asics" },
+      { label: "Series", value: "Gel Peake" },
+      { label: "Colourway", value: "White / navy / orange" },
+      { label: "SKU", value: "KD-SHO-002" },
+    ],
+  },
+  {
+    id: "shoes-new-balance-ck-10-r5",
+    slug: "new-balance-ck-10-r5",
+    name: "New Balance CK 10 R5 Cricket Shoes",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "New Balance",
+    sku: "KD-SHO-003",
+    price: 13999,
+    images: ["/images/products/new-balance-ck-10-r5-1.jpg", "/images/products/new-balance-ck-10-r5-2.jpg", "/images/products/new-balance-ck-10-r5-3.jpg"],
+    shortDescription: "New Balance cricket shoes. In stock at KD Sports, Kharar.",
+    description: "New Balance CK 10 R5 Cricket Shoes — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "New Balance" },
+      { label: "Series", value: "CK10" },
+      { label: "Colourway", value: "White / blue" },
+      { label: "SKU", value: "KD-SHO-003" },
+    ],
+  },
+  {
+    id: "shoes-dse-jaffa-gt",
+    slug: "dse-jaffa-gt",
+    name: "DSE Jaffa GT Cricket Shoes",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "DSE",
+    sku: "KD-SHO-004",
+    price: 2099,
+    images: ["/images/products/dse-jaffa-gt-1.jpg", "/images/products/dse-jaffa-gt-2.jpg", "/images/products/dse-jaffa-gt-3.jpg"],
+    shortDescription: "DSE cricket shoes. In stock at KD Sports, Kharar.",
+    description: "DSE Jaffa GT Cricket Shoes — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "DSE" },
+      { label: "Series", value: "Jaffa GT" },
+      { label: "Colourway", value: "White / neon green / orange" },
+      { label: "SKU", value: "KD-SHO-004" },
+    ],
+  },
+  {
+    id: "shoes-dc-jaffa-gt",
+    slug: "dc-jaffa-gt",
+    name: "DC Jaffa GT Cricket Shoes",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "DC",
+    sku: "KD-SHO-005",
+    price: 2299,
+    images: ["/images/products/dc-jaffa-gt-1.jpg", "/images/products/dc-jaffa-gt-2.jpg", "/images/products/dc-jaffa-gt-3.jpg"],
+    shortDescription: "DC cricket shoes. In stock at KD Sports, Kharar.",
+    description: "DC Jaffa GT Cricket Shoes — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "DC" },
+      { label: "Series", value: "Jaffa GT" },
+      { label: "Colourway", value: "White / green / yellow" },
+      { label: "SKU", value: "KD-SHO-005" },
+    ],
+  },
+  {
+    id: "shoes-adidas-crinu-23-m",
+    slug: "adidas-crinu-23-m",
+    name: "Adidas CriNu 23 M Cricket Shoes",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "Adidas",
+    sku: "KD-SHO-006",
+    price: 4999,
+    images: ["/images/products/adidas-crinu-23-m-1.jpg", "/images/products/adidas-crinu-23-m-2.jpg", "/images/products/adidas-crinu-23-m-3.jpg"],
+    shortDescription: "Adidas cricket shoes. In stock at KD Sports, Kharar.",
+    description: "Adidas CriNu 23 M Cricket Shoes — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "Adidas" },
+      { label: "Series", value: "CriNu" },
+      { label: "Colourway", value: "White / royal blue" },
+      { label: "SKU", value: "KD-SHO-006" },
+    ],
+  },
+  {
+    id: "shoes-adidas-22yds",
+    slug: "adidas-22yds",
+    name: "Adidas 22YDS Cricket Shoes",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "Adidas",
+    sku: "KD-SHO-007",
+    price: 10999,
+    images: ["/images/products/adidas-22yds-1.jpg", "/images/products/adidas-22yds-2.jpg", "/images/products/adidas-22yds-3.jpg"],
+    shortDescription: "Adidas cricket shoes. In stock at KD Sports, Kharar.",
+    description: "Adidas 22YDS Cricket Shoes — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "Adidas" },
+      { label: "Series", value: "22YDS" },
+      { label: "Colourway", value: "White / red / gold" },
+      { label: "SKU", value: "KD-SHO-007" },
+    ],
+  },
+  {
+    id: "shoes-adidas-adipower-incurza",
+    slug: "adidas-adipower-incurza",
+    name: "Adidas Adipower Incurza Cricket Shoes",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "Adidas",
+    sku: "KD-SHO-008",
+    price: 16999,
+    images: ["/images/products/adidas-adipower-incurza-1.jpg", "/images/products/adidas-adipower-incurza-2.jpg", "/images/products/adidas-adipower-incurza-3.jpg"],
+    shortDescription: "Adidas cricket shoes. In stock at KD Sports, Kharar.",
+    description: "Adidas Adipower Incurza Cricket Shoes — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "Adidas" },
+      { label: "Series", value: "Adipower Incurza" },
+      { label: "Colourway", value: "White / navy / orange" },
+      { label: "SKU", value: "KD-SHO-008" },
+    ],
+  },
+  {
+    id: "shoes-puma-teal-coral",
+    slug: "puma-cricket-shoes-teal-coral",
+    name: "Puma Cricket Shoes — Teal / Coral",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "Puma",
+    sku: "KD-SHO-009",
+    price: 6499,
+    images: ["/images/products/puma-teal-coral-1.jpg", "/images/products/puma-teal-coral-2.jpg", "/images/products/puma-teal-coral-3.jpg"],
+    shortDescription: "Puma cricket shoes. In stock at KD Sports, Kharar.",
+    description: "Puma Cricket Shoes — Teal / Coral — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "Puma" },
+      { label: "Colourway", value: "Teal / coral" },
+      { label: "SKU", value: "KD-SHO-009" },
+    ],
+  },
+  {
+    id: "shoes-puma-yellow-green",
+    slug: "puma-cricket-shoes-yellow-green",
+    name: "Puma Cricket Shoes — Yellow / Green",
+    category: "footwear",
+    subcategory: "shoes",
+    brand: "Puma",
+    sku: "KD-SHO-010",
+    price: 6499,
+    images: ["/images/products/puma-yellow-green-1.jpg", "/images/products/puma-yellow-green-2.jpg", "/images/products/puma-yellow-green-3.jpg"],
+    shortDescription: "Puma cricket shoes. In stock at KD Sports, Kharar.",
+    description: "Puma Cricket Shoes — Yellow / Green — in stock at KD Sports, Kharar, Punjab. Sizes are not listed yet — tell us your size and we will check what is in.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "Puma" },
+      { label: "Colourway", value: "Yellow / green" },
+      { label: "SKU", value: "KD-SHO-010" },
+    ],
+  },
+  {
+    id: "gloves-ton-ipl-series-pink",
+    slug: "ton-ipl-series-batting-gloves-pink",
+    name: "TON IPL Series Batting Gloves — Pink / White",
+    category: "gloves",
+    subcategory: "batting",
+    brand: "TON",
+    sku: "KD-GLV-001",
+    price: 3400,
+    images: ["/images/products/ton-ipl-series-pink-1.jpg", "/images/products/ton-ipl-series-pink-2.jpg", "/images/products/ton-ipl-series-pink-3.jpg"],
+    shortDescription: "TON batting gloves. In stock at KD Sports, Kharar.",
+    description: "TON IPL Series Batting Gloves — Pink / White — in stock at KD Sports, Kharar, Punjab. Fit matters more than the label; try a pair on if you can.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "TON" },
+      { label: "Series", value: "IPL Series" },
+      { label: "Colourway", value: "Pink / white" },
+      { label: "SKU", value: "KD-GLV-001" },
+    ],
+  },
+  {
+    id: "gloves-ton-ipl-series-gold",
+    slug: "ton-ipl-series-batting-gloves-gold",
+    name: "TON IPL Series Batting Gloves — Gold / White",
+    category: "gloves",
+    subcategory: "batting",
+    brand: "TON",
+    sku: "KD-GLV-002",
+    price: 3400,
+    images: ["/images/products/ton-ipl-series-gold-1.jpg", "/images/products/ton-ipl-series-gold-2.jpg", "/images/products/ton-ipl-series-gold-3.jpg"],
+    shortDescription: "TON batting gloves. In stock at KD Sports, Kharar.",
+    description: "TON IPL Series Batting Gloves — Gold / White — in stock at KD Sports, Kharar, Punjab. Fit matters more than the label; try a pair on if you can.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "TON" },
+      { label: "Series", value: "IPL Series" },
+      { label: "Colourway", value: "Gold / white / red" },
+      { label: "SKU", value: "KD-GLV-002" },
+    ],
+  },
+  {
+    id: "pads-kd-sports-pro-elite",
+    slug: "kd-sports-pro-elite-batting-pads",
+    name: "KD Sports Pro Elite Batting Pads",
+    category: "protection",
+    subcategory: "pads",
+    brand: "KD Sports",
+    sku: "KD-PAD-001",
+    price: 2600,
+    images: ["/images/products/kd-sports-pro-elite-1.jpg", "/images/products/kd-sports-pro-elite-2.jpg", "/images/products/kd-sports-pro-elite-3.jpg"],
+    shortDescription: "KD Sports batting pads. In stock at KD Sports, Kharar.",
+    description: "KD Sports Pro Elite Batting Pads — in stock at KD Sports, Kharar, Punjab. Worth trying on — pad fit changes how you run more than people expect.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "KD Sports" },
+      { label: "Series", value: "Pro Elite" },
+      { label: "Colourway", value: "White / red KD branding" },
+      { label: "SKU", value: "KD-PAD-001" },
+    ],
+  },
+  {
+    id: "pads-ton-player-edition-lh",
+    slug: "ton-player-edition-batting-pads-lh",
+    name: "TON Player Edition Batting Pads — Men's LH",
+    category: "protection",
+    subcategory: "pads",
+    brand: "TON",
+    sku: "KD-PAD-002",
+    price: 5000,
+    images: ["/images/products/ton-player-edition-mens-lh-1.jpg", "/images/products/ton-player-edition-mens-lh-2.jpg", "/images/products/ton-player-edition-mens-lh-3.jpg"],
+    shortDescription: "TON batting pads. In stock at KD Sports, Kharar.",
+    description: "TON Player Edition Batting Pads — Men's LH — in stock at KD Sports, Kharar, Punjab. Worth trying on — pad fit changes how you run more than people expect.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "TON" },
+      { label: "Series", value: "Player Edition" },
+      { label: "Size", value: "Men's" },
+      { label: "Colourway", value: "White" },
+      { label: "SKU", value: "KD-PAD-002" },
+    ],
+  },
+  {
+    id: "pads-kd-sports-elite-pro",
+    slug: "kd-sports-elite-pro-batting-pads",
+    name: "KD Sports Elite Pro Batting Pads",
+    category: "protection",
+    subcategory: "pads",
+    brand: "KD Sports",
+    sku: "KD-PAD-003",
+    price: 2600,
+    images: ["/images/products/kd-sports-elite-pro-1.jpg", "/images/products/kd-sports-elite-pro-2.jpg", "/images/products/kd-sports-elite-pro-3.jpg"],
+    shortDescription: "KD Sports batting pads. In stock at KD Sports, Kharar.",
+    description: "KD Sports Elite Pro Batting Pads — in stock at KD Sports, Kharar, Punjab. Worth trying on — pad fit changes how you run more than people expect.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "KD Sports" },
+      { label: "Series", value: "Elite Pro" },
+      { label: "Colourway", value: "Blue and white / red variants shown" },
+      { label: "SKU", value: "KD-PAD-003" },
+    ],
+  },
+  {
+    id: "helmet-forma-pro-axis-mst",
+    slug: "forma-former-pro-axis-mst-med",
+    name: "Forma Former Pro Axis Cricket Helmet — MST MED",
+    category: "protection",
+    subcategory: "helmets",
+    brand: "Forma",
+    sku: "KD-HEL-001",
+    price: 4179,
+    images: ["/images/products/forma-pro-axis-mst-med-1.jpg", "/images/products/forma-pro-axis-mst-med-2.jpg", "/images/products/forma-pro-axis-mst-med-3.jpg", "/images/products/forma-pro-axis-mst-med-4.jpg"],
+    shortDescription: "Forma cricket helmet. In stock at KD Sports, Kharar.",
+    description: "Forma Former Pro Axis Cricket Helmet — MST MED — in stock at KD Sports, Kharar, Punjab. Fit is everything with a helmet. Try it before you buy it.",
+    demo: false,
+    inStock: true,
+    specifications: [
+      { label: "Brand", value: "Forma" },
+      { label: "Series", value: "Former Pro Axis" },
+      { label: "Size", value: "Medium (MST MED)" },
+      { label: "Colourway", value: "Navy with steel grille" },
+      { label: "SKU", value: "KD-HEL-001" },
+    ],
+  },
 
-  /* ═══════════ DEMO ITEMS — layout placeholders ═══════════ */
+  /* =========== DEMO - no real equivalent yet =========== */
   {
     id: "cr-003",
     slug: "leather-match-cricket-ball",
@@ -506,74 +1024,6 @@ export const PRODUCTS: Product[] = [
       { label: "Leather", value: "Alum tanned" },
       { label: "Weight", value: "156 g (5.5 oz)" },
       { label: "Colour", value: "Red" },
-    ],
-  },
-  {
-    id: "cr-005",
-    slug: "batting-pads-lightweight",
-    name: "Lightweight Batting Pads",
-    category: "protection",
-    subcategory: "pads",
-    price: 3200,
-    images: [img("pads-1")],
-    shortDescription: "High-density foam bolsters, low overall weight for running.",
-    description:
-      "Protection where the ball actually hits and nothing where it does not, which keeps the weight down for running between the wickets.",
-    demo: true,
-    rating: 4.3,
-    reviews: 19,
-    sizes: ["Youth", "Boys", "Mens", "Mens LH"],
-    inStock: true,
-    specifications: [
-      { label: "Facing", value: "High-density foam bolsters" },
-      { label: "Straps", value: "Three, hook-and-loop" },
-      { label: "Knee roll", value: "Cushioned" },
-    ],
-  },
-  {
-    id: "cr-006",
-    slug: "cricket-helmet-steel-grille",
-    name: "Cricket Helmet with Steel Grille",
-    category: "protection",
-    subcategory: "helmets",
-    price: 3800,
-    images: [img("helmet-1"), img("helmet-2")],
-    shortDescription: "Adjustable steel grille, ABS shell, moisture-wicking liner.",
-    description:
-      "An adjustable steel grille set at a proper gap, an ABS shell and a liner that can be pulled out and washed. Fit matters more than anything else with a helmet — come in and try it on.",
-    demo: true,
-    rating: 4.7,
-    reviews: 22,
-    sizes: ["Junior", "Small", "Medium", "Large"],
-    inStock: true,
-    specifications: [
-      { label: "Shell", value: "ABS" },
-      { label: "Grille", value: "Steel, adjustable" },
-      { label: "Liner", value: "Removable, washable" },
-    ],
-  },
-  {
-    id: "cr-007",
-    slug: "cricket-spikes-shoes",
-    name: "Cricket Spike Shoes",
-    category: "footwear",
-    subcategory: "spikes",
-    price: 4600,
-    oldPrice: 5400,
-    images: [img("shoe-1"), img("shoe-2")],
-    shortDescription: "Metal spikes for grass, cushioned midsole for long spells.",
-    description:
-      "Full metal spikes for grip on grass, with enough midsole to get a fast bowler through a long spell without the heel complaining afterwards.",
-    demo: true,
-    rating: 4.4,
-    reviews: 31,
-    sizes: ["UK 6", "UK 7", "UK 8", "UK 9", "UK 10", "UK 11"],
-    inStock: true,
-    featured: true,
-    specifications: [
-      { label: "Outsole", value: "Metal spikes, replaceable" },
-      { label: "Upper", value: "Synthetic with mesh panels" },
-      { label: "Best for", value: "Grass wickets" },
     ],
   },
   {
@@ -600,20 +1050,16 @@ export const PRODUCTS: Product[] = [
 ];
 
 /**
- * DRAFT — NOT PUBLISHED.
+ * DRAFT - NOT PUBLISHED.
  *
- * 15 bats whose names and prices were read off screenshot captions but have
- * NOT been confirmed by the owner. The data sheet's own instruction is to keep
- * these staged until confirmed, so they are listed here as a checklist rather
- * than rendered anywhere on the site.
- *
- * To publish one: confirm the name and price with the owner, move it into
- * PRODUCTS above with a real photo, and delete its line here.
+ * 15 bats whose names and prices were read off screenshot captions but never
+ * confirmed by the owner. The source sheet says hold them until confirmed, so
+ * they are a checklist here rather than products on the site.
  *
  *   NAME                               BRAND  PRICE (INR)
-  // Storm                              —      13000
-  // Master 99                          —      14700
-  // Vaibhav Suryavanshi Performance    —      19000
+  // Storm                              -      13000
+  // Master 99                          -      14700
+  // Vaibhav Suryavanshi Performance    -      19000
   // TON Glory                          TON    21000
   // Blaster                            EM     15999
   // 360 Aura                           360    64899

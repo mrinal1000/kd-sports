@@ -17,9 +17,9 @@ export const CATEGORIES: Category[] = [
   {
     slug: "bats",
     name: "Cricket Bats",
-    tagline: "English and Kashmir willow",
+    tagline: "SS, TON, Gama — English willow",
     description:
-      "SS, TON and Gama bats in the shop right now, sized and ready to pick up. Come in and we will weigh the exact one you are looking at.",
+      "Twenty-six bats in the shop right now, from club willow to the top-end SS and TON players' range. Come in and we will weigh the exact one you are looking at.",
     image: IMAGES.categories.bats,
     subcategories: [
       { slug: "ss", name: "SS" },
@@ -43,14 +43,13 @@ export const CATEGORIES: Category[] = [
   {
     slug: "protection",
     name: "Protection",
-    tagline: "Pads, helmets, guards",
+    tagline: "Pads and helmets",
     description:
-      "Batting pads, helmets and guards. Protection is the one place not to save money — a helmet that fits badly protects badly.",
+      "Batting pads from KD Sports and TON, and Forma helmets. Protection is the one place not to save money — a helmet that fits badly protects badly.",
     image: IMAGES.categories.protection,
     subcategories: [
       { slug: "pads", name: "Batting Pads" },
       { slug: "helmets", name: "Helmets" },
-      { slug: "guards", name: "Thigh & Arm Guards" },
     ],
   },
   {
@@ -69,13 +68,16 @@ export const CATEGORIES: Category[] = [
   {
     slug: "footwear",
     name: "Cricket Shoes",
-    tagline: "Spikes and rubber soles",
+    tagline: "Asics, Adidas, New Balance, Puma",
     description:
-      "Spikes for grass and rubber soles for matting and hard grounds, in the sizes club players actually ask for.",
+      "Cricket shoes from the brands players actually ask for, from budget trainers to top-end spikes.",
     image: IMAGES.categories.footwear,
     subcategories: [
-      { slug: "spikes", name: "Spikes" },
-      { slug: "rubber", name: "Rubber Sole" },
+      { slug: "asics", name: "Asics" },
+      { slug: "adidas", name: "Adidas" },
+      { slug: "new-balance", name: "New Balance" },
+      { slug: "puma", name: "Puma" },
+      { slug: "dsc", name: "DSE / DC" },
     ],
   },
   {
