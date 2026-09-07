@@ -144,6 +144,13 @@ export const IMAGES = {
   /** The owner in his own shop — real photograph, EXIF stripped. */
   owner: "/images/owner-naresh.jpg",
   about: "/images/about-store.jpg",
+
+  /** Shop and staff photographs supplied by the owner, for the About page. */
+  store: {
+    counter: "/images/kd-sports-naresh-1.jpg",
+    team: "/images/kd-sports-team-1.jpg",
+    teamAlt: "/images/kd-sports-team-2.jpg",
+  },
   brandStatement: "/images/brand-statement.svg",
 
   categories: {
