@@ -167,9 +167,14 @@ export const IMAGES = {
   ogCover: "/images/og-cover.svg",
 
   hero: {
-    /** The shop wall — sign, pads and kit bags. Sits under a heavy scrim. */
-    primary: "/images/hero-cricket.jpg",
-    mobile: "/images/hero-cricket-mobile.jpg",
+    /** The proprietor alone at his counter, under the KD Sports sign (same
+     *  photograph as store.counter). Sits under a heavy scrim.
+     *  primary: 1920x1080 frame — the photo at full height, placed so his face
+     *  lands in the gap between the headline and the owner card, with a blurred
+     *  person-free crop of the wall filling the sides.
+     *  mobile: the portrait as shot. */
+    primary: "/images/hero-naresh.jpg",
+    mobile: "/images/hero-naresh-mobile.jpg",
   },
 
   promo: "/images/promo-banner.jpg",
