@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /wishlist
+Disallow: /cart
+
+Sitemap: https://kdsportsstore.in/sitemap.xml
